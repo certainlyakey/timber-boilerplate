@@ -1,0 +1,17 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    // {
+    //   "type": "vcs",
+    //   "url": "git@github.com:gituser/gitrepo.git"
+    // },
+  ],
+  "require": {
+    "wpackagist-plugin/timber-library": "^1.1"
+    // "advanced-custom-fields/advanced-custom-fields-pro": "^5.5",
+    // "gituser/gitrepo": "dev-master",
+  }
+}

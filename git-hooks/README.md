@@ -1,0 +1,1 @@
+The files in this directory should be copied to `.git/hooks` in order for git hooks to work.
