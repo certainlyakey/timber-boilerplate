@@ -1,0 +1,34 @@
+{
+  "esversion"  : 6,
+  "bitwise" : true,
+  "laxcomma": true,
+  "curly"   : true,
+  "debug"   : true,
+  "eqeqeq"  : true,
+  "immed"   : true,
+  "indent"  : 2,
+  "latedef" : "nofunc",
+  "newcap"  : true,
+  "noarg"   : true,
+  "quotmark": true,
+  "undef"   : true,
+  "unused"  : false,
+  "strict"  : true,
+  "trailing": true,
+  "smarttabs": true,
+  "expr":   true,
+
+  // Environments:
+  "browser" : true,
+  "jquery"  : true,
+  "node"    : true,
+
+  // Globals:
+  "predef"  : [
+    "ga",
+    "ajaxurl",
+    "localized_strings",
+    "script_data",
+    "Modernizr"
+  ]
+}

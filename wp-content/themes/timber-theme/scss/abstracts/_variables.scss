@@ -1,0 +1,62 @@
+// Site variables
+
+// Colors
+$color-pomegranate:#ee2d29;
+$color-concrete:#f3f3f3;
+
+$color-accent:$color-pomegranate;
+
+$color-link:$color-accent;
+$color-bg:white;
+
+//Proportions
+$unit-x:10px;
+$unit-y:$unit-x;
+
+//Spacing
+$total-cols:map-get($susy, columns);
+$col:map-get($susy, column-width);
+$gutter:map-get($susy, gutters) * $col;
+
+//Typography
+// xxs-xs-s-[m]-l-xl-xxl
+$ff:"Helvetica Neue", Helvetica, Arial, sans-serif;
+$fs-s:14px;
+$fs:16px;
+$fs-l:20px;
+$fs-xl:22px;
+$fs-xxl:24px;
+$fs-xxxl:40px;
+$fs-xxxxl:71px;
+$lh:1.333;
+$lh-l:1.25;
+$lh-xl:1.167;
+$lh-xxl:1;
+$lh-xxxl:1;
+
+//Width
+
+//Thumbnail sizes — same as wp registered sizes unless noted otherwise
+// $third-low-height:300px;
+
+//Visual effects
+
+//Transitions & animations
+// note that property is omitted 
+// $transition-main:ease-out .4s;
+
+//Excluded selectors (only simple selectors)
+// use @include t-focused with arguments to set your own styling when element is focused
+$classes-exclude-from-focus:
+  'c-selector-1'
+  'c-selector-2';
+
+
+//Breakpoints
+// usage: @include mq($from: xlarge) {}
+$mq-breakpoints: (
+  small:  380px,
+  medium: 768px,
+  large:  1024px,
+  xlarge: 1280px,
+);

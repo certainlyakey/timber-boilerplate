@@ -1,0 +1,14 @@
+@mixin c-example-component($base_class) {
+
+  & {
+  }
+
+  @at-root {
+    #{$base_class}_modifier {
+    }
+    #{$base_class}__element {
+    }
+    #{$base_class}__element_modifier {
+    }
+  }
+}

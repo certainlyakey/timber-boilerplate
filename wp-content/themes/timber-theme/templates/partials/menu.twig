@@ -1,0 +1,32 @@
+{% if menu %}
+  {% spaceless %}
+    {% set listclass = [] %}
+    {% if is_submenu is defined and is_submenu == true %}
+      {% set listclass = listclass|merge([ baseclass ~ '__submenu' ]) %}
+    {% else %}
+      {% set listclass = listclass|merge([ baseclass ~ '__list' ]) %}
+    {% endif %}
+    
+    <ul class="{{ listclass | join(' ') }}">
+    {% for item in menu %}
+      {# {% set itemclasses = item.classes %} #}
+      {% set itemclasses = [] %}
+      {% if is_submenu is defined and is_submenu == true %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__subitem' ]) %}
+      {% else %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item' ]) %}
+      {% endif %}
+      {% if item.current %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_current' ]) %}
+      {% endif %}
+      {% if item.current_item_parent %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_current-parent' ]) %}
+      {% endif %}
+      <li class="{{ itemclasses | join(' ') }}">
+        <a class="{{ baseclass }}__link" href="{{item.get_link}}">{{item.title}}</a>
+        {% include 'partials/menu.twig' with {'menu':item.get_children, is_submenu:true } %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endspaceless %}
+{% endif %}

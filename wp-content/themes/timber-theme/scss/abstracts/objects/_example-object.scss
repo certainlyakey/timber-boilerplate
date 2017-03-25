@@ -1,0 +1,11 @@
+// @z-index space: 90-100
+@mixin o-example-object($base_class) {
+
+  & {
+  }
+
+  @at-root {
+    #{$base_class}__element {
+    }
+  }
+}

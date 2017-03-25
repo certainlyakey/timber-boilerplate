@@ -1,0 +1,9 @@
+{# look for the logic in home.php #}
+{% extends "base.twig" %}
+
+
+{% block content_area_append %}
+
+  {% include 'partials/posts-pagination.twig' with {'pagination': pagination} %}
+
+{% endblock %}

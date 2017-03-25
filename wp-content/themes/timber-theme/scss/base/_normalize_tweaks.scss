@@ -1,0 +1,45 @@
+// Tweaks for Normalize 3.0
+h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, li, figure {
+  margin:0;
+  padding:0; 
+}
+
+h1, h2, h3, h4, h5, h6 {  
+  font-weight:normal; 
+  font-size:100%; 
+}
+
+ul {
+  list-style:none;
+}
+
+a:focus {
+  outline:none;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ol, ul {
+  list-style-position:inside; 
+}
+
+textarea {
+  max-width:100%;
+  resize:vertical;
+}
+
+fieldset {
+  border:none; 
+  margin:0; 
+  padding:0; 
+}
+
+select {
+  color:black; 
+}

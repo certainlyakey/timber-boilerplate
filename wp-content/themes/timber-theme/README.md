@@ -1,0 +1,1 @@
+This is a boilerplate theme using Timber.

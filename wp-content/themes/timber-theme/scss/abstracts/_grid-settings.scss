@@ -1,0 +1,13 @@
+// use gutter() for getting gutter, 
+// use @include container for setting the container,
+// use @include span(n of 12) or span(n) to set widths when a row contains cols of different width (in number of basic columns). Will need a nth-child(<last-column>n) {@include last;} for each last column in row
+// use @include gallery(n of 12) to set width for a column when all columns in a row are of same width
+
+$susy: (
+  columns: 12,  // The number of columns in your grid
+  gutters: 1/2, // The size of a gutter in relation to a single column
+  container: auto,
+  math: fluid,
+  column-width: 20px,
+  global-box-sizing: border-box
+);

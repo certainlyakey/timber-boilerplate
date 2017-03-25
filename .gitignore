@@ -110,7 +110,6 @@ Thumbs.db
 # track these mu-plugins, plugins, and themes
 # add your own entries here
 # !wp-content/mu-plugins/example-mu-plugin/
-# !wp-content/plugins/exove*
 !wp-content/themes/timber-theme/
 
 #track the fix images and redirect scripts

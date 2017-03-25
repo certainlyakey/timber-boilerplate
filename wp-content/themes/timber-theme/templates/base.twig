@@ -1,0 +1,45 @@
+{% block head %}
+
+  {% include 'partials/html-header.twig' %}
+    {% block head_append '' %}
+  </head>
+  
+{% endblock %}
+
+  <body class="{{body_class}}">
+
+    <div class="c-page-wrapper">
+
+      {% block header %}
+        {% include 'partials/header.twig' %}
+      {% endblock %}
+
+      <main class="c-content-area" id="main-content">
+
+        {% block content_area_prepend '' %}
+          
+        {% block content_area_inner %}
+          {{ __('Sorry, no content', 'theme_domain') }}
+        {% endblock %}
+
+        {% block content_area_append '' %}
+
+      </main><!-- /.c-content-area -->
+    </div><!-- /.c-page-wrapper -->
+
+    {% block footer_before %}
+      {% include 'partials/posts-partial.twig' %}
+    {% endblock %}
+
+    {% block footer %}
+      <footer class="c-footer">
+        {% include 'partials/footer.twig' %}
+      </footer>
+    {% endblock %}
+
+    {% block footer_after '' %}
+
+    {{ function('wp_footer') }}
+    
+  </body>
+</html>

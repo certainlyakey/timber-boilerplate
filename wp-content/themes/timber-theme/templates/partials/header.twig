@@ -1,0 +1,9 @@
+<header class="c-header">
+  
+  <a href="#main-content">{{ __('Skip to content', 'theme_domain') }}</a>
+
+  <nav>
+    {% include 'partials/menu.twig' with {'menu': mainmenu.get_items, 'baseclass': 'c-mainmenu'} %}
+  </nav>
+  
+</header>

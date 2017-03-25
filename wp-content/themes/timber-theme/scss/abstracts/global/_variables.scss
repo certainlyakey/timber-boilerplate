@@ -1,0 +1,4 @@
+//Variables
+$js-on:'html:not(.no-js) &';
+// remake of the Bourbon's variable with lowered specificity
+$all-text-inputs:'[type="color"], [type="date"], [type="datetime-local"], [type="datetime"], [type="email"], [type="month"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], textarea';

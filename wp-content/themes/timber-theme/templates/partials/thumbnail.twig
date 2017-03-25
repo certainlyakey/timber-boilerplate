@@ -1,0 +1,17 @@
+{% if post %}
+
+  {% if post.thumbnail %}
+
+    {% set thumbnail = post.thumbnail %}
+
+    {% set thumb_classes = [] %}
+    {% if classes is iterable %}
+      {% set thumb_classes = thumb_classes|merge(classes) %}
+    {% else %}
+      {% set thumb_classes = [classes] %}
+    {% endif %}
+    
+    <img{{ ' class="' ~ thumb_classes|join(' ') ~ '"' }} src="{{thumbnail.src(size)}}" alt="{{ thumbnail.alt }}" width="{{ thumbnail.sizes[size].width }}" height="{{ thumbnail.sizes[size].height }}">
+
+  {% endif %}
+{% endif %}

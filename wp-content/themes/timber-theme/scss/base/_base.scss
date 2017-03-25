@@ -1,0 +1,25 @@
+body {
+  background-color:$color-bg; 
+  font:#{$fs}/#{$lh} $ff; 
+}
+
+a {
+  @include t-link-base;
+}
+
+.s-textcontent {
+  @include t-textcontent;
+}
+
+.is-page-loading * {
+  transition:none !important;
+}
+
+.u-link {
+  @include t-link-base;
+}
+
+.u-link-button {
+  @extend .u-link;
+  @include u-remove-button-styling;
+}

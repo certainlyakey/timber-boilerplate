@@ -1,0 +1,31 @@
+{% if pagination %}
+  
+  {% set classes = ['c-posts-pagination'] %}
+  {% if additional_classes is iterable %}
+    {% set classes = classes|merge(additional_classes) %}
+  {% endif %}
+  
+  {% spaceless %}
+    <nav{{ ' class="' ~ classes|join(' ') ~ '"' }}>
+
+      {% if before_after and pagination.prev %}
+        <a href="{{pagination.prev.link}}" class="c-posts-pagination__item c-posts-pagination__item_prev">{{ __('Previous', 'theme_domain') }}</a>
+      {% endif %}
+
+      {% for page in pagination.pages %}
+        {% if page.link %}
+          {# use page.class to assign Wordpress classes #}
+          <a href="{{page.link}}" class="c-posts-pagination__item c-posts-pagination__item_numbered">{{page.title}}</a>
+        {% else %}
+          <span class="c-posts-pagination__item c-posts-pagination__item_numbered c-posts-pagination__item_current">{{page.title}}</span>
+        {% endif %}
+      {% endfor %}
+
+      {% if before_after and pagination.next %}
+        <a href="{{pagination.next.link}}" class="c-posts-pagination__next">{{ __('Next', 'theme_domain') }}</a>
+      {% endif %}
+
+    </nav>
+  {% endspaceless %}
+
+{% endif %}

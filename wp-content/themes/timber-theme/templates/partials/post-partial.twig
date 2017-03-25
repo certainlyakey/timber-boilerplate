@@ -1,0 +1,11 @@
+{% if post %}
+  <li>
+    
+    {% include 'partials/thumbnail.twig' with {'post': post, 'size':'third_high', 'classes': 'thumbnail-class'} %}
+
+    <a href="{{ post.link }}">
+      <h3>{{ post.title }}</h3>
+    </a>
+
+  </li>
+{% endif %}
