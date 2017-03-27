@@ -16,9 +16,6 @@ Author:       Aleksandr Beliaev
 @import 'abstracts/global/_variables';
 @import 'abstracts/global/_mixins';
 
-// @import 'abstracts/global/wordpress/_variables';
-@import 'abstracts/global/wordpress/_mixins';
-
 // !Site abstracts
 @import 'abstracts/_grid-settings';
 @import 'abstracts/_variables';
@@ -37,10 +34,10 @@ Author:       Aleksandr Beliaev
 @import 'base/_scaffolding';
 
 // !Generated
-@import 'generated/_svg-sprite';
+// @import 'generated/_svg-sprite';
 
 // !Components
-@import 'components/example-component/c-example-component';
+@import 'components/example-component/_example-component';
 
 // Apply the components to corresponding component classes
 @import '_main';
