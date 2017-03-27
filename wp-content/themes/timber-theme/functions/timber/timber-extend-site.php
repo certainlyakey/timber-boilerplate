@@ -4,7 +4,7 @@
 */
 
 
-class TimberTheme extends TimberSite {
+class CurrentTheme extends TimberSite {
   function __construct() {
 
     add_filter( 'timber_context', array( $this, 'themeprefix_add_to_context_global' ) );
@@ -25,4 +25,4 @@ class TimberTheme extends TimberSite {
   }
 
 }
-new TimberTheme();
+new CurrentTheme();
