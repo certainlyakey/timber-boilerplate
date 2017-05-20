@@ -8,6 +8,10 @@ function themeprefix_script_enqueuer() {
   wp_register_script( 'site', get_template_directory_uri().'/js/scripts.min.js', array( 'jquery', 'modernizr' ), false, true );
   wp_enqueue_script( 'site' );
 
+  wp_deregister_script( 'jquery' );
+  wp_register_script( 'jquery', get_template_directory_uri().'/js/libs/jquery.min.js', array( ), false, true );
+  wp_enqueue_script( 'jquery' );
+
   wp_register_script( 'modernizr', get_template_directory_uri().'/js/modernizr.min.js', array( ), false, true );
   wp_enqueue_script( 'modernizr' );
 

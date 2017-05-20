@@ -135,7 +135,17 @@ gulp.task('scripts', function(){
 });
 
 
+var libs_copied_from_modules  = [
+  'node_modules/jquery/dist/jquery.min.js'
+];
+gulp.task('copy_to_libs', () => gulp
+  .src(libs_copied_from_modules)
+  .pipe(gulp.dest('js/libs'))
+);
+
+
 gulp.task('default', [
+  'copy_to_libs',
   'styles',
   'scripts',
   'svg-sprites',
