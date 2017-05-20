@@ -3,11 +3,16 @@
 // use @include span(n of 12) or span(n) to set widths when a row contains cols of different width (in number of basic columns). Will need a nth-child(<last-column>n) {@include last;} for each last column in row
 // use @include gallery(n of 12) to set width for a column when all columns in a row are of same width
 
+// uppercase variables are constants from common_config.json file
+$susy-columns-number:$COLS_NUMBER;
+$susy-gutter-width:$GUTTER_WIDTH * 1px;
+$susy-column-width:$COL_WIDTH * 1px;
+
 $susy: (
-  columns: 12,  // The number of columns in your grid
-  gutters: 1/2, // The size of a gutter in relation to a single column
+  columns: $susy-columns-number,  // The number of columns in your grid
+  gutters: 1/2, // The size of a gutter in relation to a single column (allows to input value in px as 'gutter-width-px/col-width-px')
   container: auto,
   math: fluid,
-  column-width: 20px,
+  column-width: $susy-column-width,
   global-box-sizing: border-box
 );

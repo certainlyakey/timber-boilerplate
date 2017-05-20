@@ -5,7 +5,8 @@
 
 
 //Custom post thumbnail sizes
-// add_image_size( 'custom_size', 80, 80, true );
+// add_image_size( 'cover', $common_config->cover_width, $common_config->cover_height, true );
+// add_image_size( 'thumb', ar_cols(6), 9999, true );
 
 // These standard sizes are only for end user usage in rich content area
 // Their height should be kept unlimited to prevent incorrect resize that changes image width

@@ -1,9 +1,11 @@
 @function r($grayscale-rgb-number){
   @return rgb($grayscale-rgb-number,$grayscale-rgb-number,$grayscale-rgb-number)
 }
+
 @function strip-units($number) {
   @return $number / ($number * 0 + 1);
 }
+
 //function for url-encoding any color (for using color variables inside data encoded SVGs)
 @function encodecolor($string) {
   @if type-of($string) == 'color' {

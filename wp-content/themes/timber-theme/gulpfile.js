@@ -1,11 +1,11 @@
 'use strict';
 
 // GULP CONFIG
-// .env is located in the root of the repo
-require('dotenv').config({ path: './../../../.env' });
+// .env is located in the root of the repo. Contains environment dependent vars. Non committable
+var dotenv = require('dotenv').config({ path: './../../../.env' });
+// common_config.json is located in the root of the theme. Contains variables shared between Gulp, PHP, JS, and SASS. Committable
+var common_config = require('./common_config.json');
 
-
-//npm install to get all the deps
 var gulp              = require('gulp');
 var gutil             = require('gulp-util');
 
@@ -37,7 +37,7 @@ var babelify          = require('babelify'); //babel-preset-es2015 should be ins
 var source            = require('vinyl-source-stream');
 var buffer            = require('vinyl-buffer');
 var modernizr         = require('gulp-modernizr');
-
+var sassvariables     = require('gulp-sass-variables');
 
 
 // TASKS CONFIG
@@ -57,6 +57,10 @@ var svgSymbolsSpriteConfig  = {
   }
 };
 
+var common_config_vars = {};
+for (var variable in common_config) {
+  common_config_vars['$' + variable.toUpperCase()] = common_config[variable];
+}
 
 
 // TASKS
@@ -72,6 +76,7 @@ gulp.task('styles', function() {
   gulp.src(['scss/style.scss'])
   .pipe(plumber())
   .pipe( dev ? sourcemaps.init() : gutil.noop() )
+  .pipe(sassvariables(common_config_vars))
   .pipe(sass({ 
     style: 'expanded',
     includePaths: [bourbon.includePaths, 'node_modules/susy/sass']

@@ -13,6 +13,9 @@ $functions_path = get_template_directory() . '/functions/';
 $dev_functions_file_path = $functions_path . 'dev-functions.php';
 if (file_exists($dev_functions_file_path)) { require_once( $dev_functions_file_path ); }
 
+// Obtain and setup shared variables  
+require_once( $functions_path . 'common-variables.php');
+
 // Timber setup
 require_once( $functions_path . 'timber/timber-setup.php');
 require_once( $functions_path . 'timber/timber-extend-site.php');
