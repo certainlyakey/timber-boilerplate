@@ -5,6 +5,7 @@
 
     <a href="{{ post.link }}">
       <h3>{{ post.title }}</h3>
+      <div>{{ post.post_excerpt|e('wp_kses_post') }}</div>
     </a>
 
   </li>
