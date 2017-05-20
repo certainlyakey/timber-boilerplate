@@ -22,6 +22,7 @@
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.0.1",
     "node-bourbon": "^4.2.8",
+    "sass-module-importer": "^1.4.0",
     "sass-mq": "^3.3.2",
     "susy": "^2.2.12",
     "vinyl-buffer": "^1.0.0",

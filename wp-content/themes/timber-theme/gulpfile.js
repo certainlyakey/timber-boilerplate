@@ -38,6 +38,7 @@ var source            = require('vinyl-source-stream');
 var buffer            = require('vinyl-buffer');
 var modernizr         = require('gulp-modernizr');
 var sassvariables     = require('gulp-sass-variables');
+var moduleimporter    = require('sass-module-importer');
 
 
 // TASKS CONFIG
@@ -79,7 +80,8 @@ gulp.task('styles', function() {
   .pipe(sassvariables(common_config_vars))
   .pipe(sass({ 
     style: 'expanded',
-    includePaths: [bourbon.includePaths, 'node_modules/susy/sass']
+    includePaths: [bourbon.includePaths, 'node_modules/susy/sass'],
+    importer: moduleimporter()
   }))
   .pipe(autoprefixer({
     browsers: [

@@ -1,3 +1,2 @@
 // Put here front end CSS and Javascript dependencies (Jquery UI-like)
-// Rename vendor css files to _<original-name>.css
-// @import '_jq.ui.min';
+// Thanks to sass-module-importer gulp plugin we can import css files from node_modules without renaming like this: "@import 'fullpage.js/dist/jquery.fullpage.min.css';"
