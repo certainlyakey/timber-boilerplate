@@ -1,0 +1,12 @@
+{% if id %}
+
+  {% set svg_classes = [ 'u-svg-' ~ id ~ '-size' ] %}
+  {% if classes is iterable %}
+    {% set svg_classes = svg_classes|merge(classes) %}
+  {% endif %}
+  
+  <svg {{ title ? 'role="img"' : 'aria-hidden="true"' }}{{ ' class="' ~ svg_classes|join(' ') ~ '"' }}>
+    {{ title ? ' <title>' ~ title ~ '</title>' }}
+    <use xlink:href="{{ theme_link ? theme_link : theme.link }}/img/sprite.svg#{{ id }}"></use>
+  </svg>
+{% endif %}
