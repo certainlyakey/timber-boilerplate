@@ -88,7 +88,9 @@ gulp.task('styles', function() {
       'last 3 versions'
     ]
   }))
-  .pipe(cssnano())
+  .pipe(cssnano({
+    zindex: false
+  }))
   .pipe(concat('style.css'))
   .pipe( dev ? sourcemaps.write() : gutil.noop() )
   .pipe(gulp.dest('./'))
