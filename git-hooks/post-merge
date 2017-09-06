@@ -10,4 +10,4 @@ run_if_changed() {
 
 run_if_changed "composer.json" "sudo -u php-fpm /usr/local/bin/composer update"
 run_if_changed "package.json" "(cd ./wp-content/themes/timber-theme && npm prune && npm install)"
-run_if_changed "timber-theme/scss/\|timber-theme/js/\|timber-theme/gulpfile.js" "(cd ./wp-content/themes/timber-theme && gulp)"
+run_if_changed "timber-theme/scss/\|timber-theme/js/\|timber-theme/gulpfile.js|.gitignore" "(cd ./wp-content/themes/timber-theme && gulp)"
