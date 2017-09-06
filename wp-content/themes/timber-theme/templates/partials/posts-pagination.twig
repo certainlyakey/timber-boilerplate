@@ -9,20 +9,28 @@
     <nav{{ ' class="' ~ classes|join(' ') ~ '"' }}>
 
       {% if before_after and pagination.prev %}
-        <a href="{{pagination.prev.link}}" class="c-posts-pagination__item c-posts-pagination__item_prev">{{ __('Previous', 'theme_domain') }}</a>
+        <a href="{{pagination.prev.link}}" aria-label="{{ __('Go to previous page', 'theme_domain') }}" class="c-posts-pagination__item c-posts-pagination__item_prev">{{ __('Previous', 'theme_domain') }}</a>
       {% endif %}
 
       {% for page in pagination.pages %}
+
         {% if page.link %}
           {# use page.class to assign Wordpress classes #}
-          <a href="{{page.link}}" class="c-posts-pagination__item c-posts-pagination__item_numbered">{{page.title}}</a>
-        {% else %}
-          <span class="c-posts-pagination__item c-posts-pagination__item_numbered c-posts-pagination__item_current">{{page.title}}</span>
+          <a href="{{page.link}}" aria-label="{{ __('Page', 'theme_domain') ~ ' ' ~ page.title }}" class="c-posts-pagination__item c-posts-pagination__item_link">{{page.title}}</a>
         {% endif %}
+
+        {% if page.current %}
+          <a href="{{page.link}}" aria-label="{{ __('Current page', 'theme_domain') ~ ', ' ~ __('page', 'theme_domain') ~ ' ' ~ page.title }}" aria-current="true" class="c-posts-pagination__item c-posts-pagination__item_current">{{page.title}}</span>
+        {% endif %}
+
+        {% if page.class == 'dots' %}
+          <span class="c-posts-pagination__item">{{page.title}}</span>
+        {% endif %}
+
       {% endfor %}
 
       {% if before_after and pagination.next %}
-        <a href="{{pagination.next.link}}" class="c-posts-pagination__next">{{ __('Next', 'theme_domain') }}</a>
+        <a href="{{pagination.next.link}}" aria-label="{{ __('Go to next page', 'theme_domain') }}" class="c-posts-pagination__next">{{ __('Next', 'theme_domain') }}</a>
       {% endif %}
 
     </nav>
