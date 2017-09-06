@@ -1,11 +1,15 @@
 'use strict';
 
 /**
- * Main menu with hamburger icon on mobiles
+ * Example module
  */
 function init() {
 
   // !Set vars
+  // var common = require('../modules/_common');
+  // var isiOSSafari = common.isiOSSafari();
+
+  // var common_config = require('../../common_config.json');
 
 
 
