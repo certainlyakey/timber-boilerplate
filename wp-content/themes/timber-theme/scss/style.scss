@@ -8,8 +8,9 @@ Author:       Aleksandr Beliaev
 
 // See the wiki for the explanation on what different files do
 
-// !External SASS dependencies
+// !Dependencies
 @import '_dependencies';
+@import '_vendors';
 
 // !Global abstracts — can be transferred from project to project
 @import 'abstracts/global/_functions';
@@ -20,15 +21,12 @@ Author:       Aleksandr Beliaev
 @import 'abstracts/_grid-settings';
 @import 'abstracts/_variables';
 @import 'abstracts/_mixins';
-@import 'abstracts/theming/_textcontent-mixins';
+@import 'abstracts/_animations';
+@import 'abstracts/_textcontent-mixins';
 @import 'abstracts/objects/_example-object';
-
-// !Vendors
-// @import 'vendors/_vendors';
 
 // !Base
 @import 'base/_fontface';
-@import 'base/_normalize';
 @import 'base/_normalize_tweaks';
 @import 'base/_base';
 @import 'base/_scaffolding';
@@ -36,7 +34,7 @@ Author:       Aleksandr Beliaev
 // !Generated
 // @import 'generated/_svg-sprite';
 
-// !Components
+// !Components 
 @import 'components/example-component/_example-component';
 
 // Apply the components to corresponding component classes
@@ -45,8 +43,6 @@ Author:       Aleksandr Beliaev
 // !Layout
 @import 'layout/_header';
 @import 'layout/_footer';
-@import 'layout/_content-area';
-@import 'layout/_sidebar';
 
 // !Pages with non common design that cannot be broken up into components
 // @import 'pages/_landing-page';

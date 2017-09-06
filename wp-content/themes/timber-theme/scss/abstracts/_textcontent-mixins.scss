@@ -1,0 +1,92 @@
+// pure appearance (typographic/cosmetic) styles
+// please keep here only those mixins that are related to single post styling 
+
+@mixin t-textcontent {
+  // preventing text styles leaking into widgets pasted into content area via shortcodes
+  &> {
+    blockquote {
+      font-style:italic; 
+    }
+    h1, h2 {
+      @include t-heading-xxl;
+    }
+    h3 {
+      @include t-heading-xl;
+    }
+    h4 {
+      @include t-heading-l;
+    }
+    h5 {
+      @include t-heading-m;
+    }
+    h6 {
+      @include t-heading-s;
+    }
+    p, ul, ol {
+      &:not(:only-child) {
+        @include u-spacing-y($unit-y, 'margin');
+      }
+    }
+    h1, h2, h3, h4, h5, h6, p, ul, ol {
+      &:first-child {
+        margin-top:0; 
+      }
+    }
+    ul li {
+      list-style-type:disc; 
+    }
+    ul, ol {
+      li li {
+        padding-left:$unit-x*2; 
+      }
+    }
+    pre {
+      padding:$unit-y $unit-x; 
+      background-color:$color-bg; 
+    }
+  }
+  img {
+    display:block; 
+    @include mq($until: large) {
+      @include u-image-autowidth;
+    }
+  }
+}
+
+
+@mixin t-heading-s {
+  font-style:italic; 
+  font-weight:bold; 
+}
+
+
+@mixin t-heading-m {
+  font-weight:bold; 
+}
+
+
+@mixin t-heading-l {
+  font-size:$fs-l; 
+  line-height:$lh-l; 
+}
+
+
+@mixin t-heading-xl {
+  font-weight:bold; 
+  font-size:$fs-xl; 
+  line-height:$lh-xl; 
+}
+
+
+@mixin t-heading-xxl {
+  font-weight:bold; 
+  font-size:$fs-xxl; 
+  line-height:$lh-xxl; 
+}
+
+
+@mixin t-heading-xxxl {
+  font-weight:bold; 
+  font-size:$fs-xxxl; 
+  line-height:$lh-xxxl; 
+}

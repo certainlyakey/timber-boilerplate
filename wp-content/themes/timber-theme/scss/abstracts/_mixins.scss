@@ -19,57 +19,6 @@
   text-decoration:none; 
 }
 
-@mixin t-textcontent {
-  // preventing text styles leaking into widgets pasted into content area via shortcodes
-  &> {
-    blockquote {
-      font-style:italic; 
-    }
-    h1, h2 {
-      @include t-heading-xxl;
-    }
-    h3 {
-      @include t-heading-xl;
-    }
-    h4 {
-      @include t-heading-l;
-    }
-    h5 {
-      @include t-heading-m;
-    }
-    h6 {
-      @include t-heading-s;
-    }
-    p, ul, ol {
-      &:not(:only-child) {
-        @include u-spacing-y($unit-y, 'margin');
-      }
-    }
-    h1, h2, h3, h4, h5, h6, p, ul, ol {
-      &:first-child {
-        margin-top:0; 
-      }
-    }
-    ul li {
-      list-style-type:disc; 
-    }
-    ul, ol {
-      li li {
-        padding-left:$unit-x*2; 
-      }
-    }
-    pre {
-      padding:$unit-y $unit-x; 
-      background-color:$color-bg; 
-    }
-  }
-  img {
-    display:block; 
-    @include mq($until: large) {
-      @include u-image-autowidth;
-    }
-  }
-}
 
-@mixin t-focused() {
+@mixin t-focused {
 }

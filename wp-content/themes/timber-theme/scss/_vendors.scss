@@ -1,2 +1,3 @@
-// Put here front end CSS and Javascript dependencies (Jquery UI-like)
+// CSS and Javascript dependencies
 // Thanks to sass-module-importer gulp plugin we can import css files from node_modules without renaming like this: "@import 'fullpage.js/dist/jquery.fullpage.min.css';"
+@import 'normalize.css/normalize.css';

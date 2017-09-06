@@ -1,4 +1,3 @@
-// This is for SASS compile-time dependencies
-@import 'bourbon';
+// SASS compile-time dependencies
 @import 'susy';
-@import './node_modules/sass-mq/_mq';
+@import 'sass-mq/_mq';
