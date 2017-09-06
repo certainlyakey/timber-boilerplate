@@ -29,14 +29,14 @@
   position:absolute;
   @if $mode == 'horizontally' {
     left:50%; 
-    @include transform(translateX(-50%));
+    transform: translateX(-50%);
   } @elseif $mode == 'vertically' {
     top:50%; 
-    @include transform(translateY(-50%));
+    transform: translateY(-50%);
   } @else {
     top:50%; 
     left:50%; 
-    @include transform(translate(-50%, -50%));
+    transform: translate(-50%, -50%);
   } 
 }
 
@@ -237,4 +237,63 @@
   background:none; 
   box-shadow:none; 
   padding:0; 
+}
+
+// https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+@mixin u-font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+
+// from Bourbon
+@mixin u-size($value) {
+  $width: nth($value, 1);
+  $height: $width;
+
+  @if length($value) > 1 {
+    $height: nth($value, 2);
+  }
+
+  @if is-size($height) {
+    height: $height;
+  } @else {
+    @warn '`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.';
+  }
+
+  @if is-size($width) {
+    width: $width;
+  } @else {
+    @warn '`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.';
+  }
+}
+
+// from Bourbon
+@mixin u-clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
 }
