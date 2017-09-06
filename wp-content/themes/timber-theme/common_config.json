@@ -1,7 +1,5 @@
 {
   "cols_number":10,
   "col_width":70,
-  "gutter_width":25,
-  "cover_width":830,
-  "cover_height":490
+  "gutter_width":25
 }

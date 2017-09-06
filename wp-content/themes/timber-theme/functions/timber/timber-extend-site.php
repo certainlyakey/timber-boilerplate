@@ -14,6 +14,9 @@ class CurrentTheme extends TimberSite {
   }
 
   function themeprefix_add_to_context_global( $context ) {
+    global $common_config;
+    $context['common_config'] = $common_config;
+    
     $context['site'] = $this;
     return $context;
   }

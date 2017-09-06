@@ -1,5 +1,13 @@
 // !Global mixins
 
+// issue a warning if a variable provided by common_config.json differs from what is calculated in SCSS. This would probably mean that the common variable needs to be updated
+// usage: @include warn-on-common-var-mismatch(to-px($_mq_codeblock_small),$local-mq-codeblock-small);
+@mixin warn-on-common-var-mismatch($common_var, $calculated_var) {
+  @if $common_var != $calculated_var {
+    @warn 'common config variable is not equal to the variable calculated in SCSS';
+  }
+}
+
 //@usage @include headings(){font-family:sans-serif; ...}
 @mixin headings($from: 1, $to: 6, $notfirstchild:false){
   @for $i from $from through $to{

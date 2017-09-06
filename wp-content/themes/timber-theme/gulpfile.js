@@ -1,48 +1,84 @@
 'use strict';
 
 // GULP CONFIG
-// .env is located in the root of the repo. Contains environment dependent vars. Non committable
-var dotenv = require('dotenv').config({ path: './../../../.env' });
-// common_config.json is located in the root of the theme. Contains variables shared between Gulp, PHP, JS, and SASS. Committable
-var common_config = require('./common_config.json');
 
-var gulp              = require('gulp');
-var gutil             = require('gulp-util');
+var _gulp               = require('gulp');
+
+// Allows to output different builds depending on current environment. .env is located in the root of the repo
+var _dotenv             = require('dotenv').config({ path: './../../../.env' });
+
+var _gutil              = require('gulp-util');
+var _sass               = require('gulp-sass');
+
+// Restoring on build error
+var _plumber            = require('gulp-plumber');
+
+// CSS minification
+var _cssnano            = require('gulp-cssnano'); 
+
+// Joining CSS files
+var _concat             = require('gulp-concat');
+
+// Build done notifications
+var _notify             = require('gulp-notify'); 
+
+// Uglifying JS
+var _uglify             = require('gulp-uglify');
+
+// Creates svg sprites from source svg files
+var _svgsprite          = require('gulp-svg-sprite'); 
+
+// Checks JS for mistakes. jshint-stylish should be installed too
+var _jshint             = require('gulp-jshint'); 
+
+// Autoprefixes SASS
+var _autoprefixer       = require('gulp-autoprefixer');
+
+// Generates SASS/JS sourcemaps for easier inbrowser debugging
+var _sourcemaps         = require('gulp-sourcemaps');
+
+// These handle merging JS modules 
+var _browserify         = require('browserify');
+var _source             = require('vinyl-source-stream');
+var _buffer             = require('vinyl-buffer');
+
+// Allows to use ES2015 in JS. babel-preset-es2015 should be installed too
+var _babelify           = require('babelify');
+
+// Adds browser feature test results to HTML and JS
+var _modernizr          = require('gulp-modernizr');
+
+// Source for variables shared between PHP, gulp, JS, and SASS
+var _common_config      = require('./common_config.json');
+
+// Injects variables from common_config file to SASS
+var _sassvariables      = require('gulp-sass-variables');
+
+// Allows to inject css @imports instead of just linking to them (Sass doesn't have this option by default)
+var _sassmoduleimporter = require('sass-module-importer');
+
+
+// TASKS CONFIG
+
+// Standalone JS  libraries to copy to production build
+var libs_copied_from_nodemodules  = [
+  'node_modules/jquery/dist/jquery.min.js'
+];
 
 
 // Environment variables
 // if defined in a .env file or if defined as a gulp commandline argument (gulp --env=true)
-var dev = true;
+var is_env_dev = true;
 if (typeof process.env.ENV !== 'undefined') {
-  dev = (process.env.ENV === 'dev');
+  is_env_dev = (process.env.ENV === 'dev');
 }
-if (typeof gutil.env.env !== 'undefined') {
-  dev = (gutil.env.env === 'dev');
+if (typeof _gutil.env.env !== 'undefined') {
+  is_env_dev = (_gutil.env.env === 'dev');
 }
 
 
-var sass              = require('gulp-sass');
-var plumber           = require('gulp-plumber'); //restoring on build error
-var cssnano           = require('gulp-cssnano'); //css minification
-var concat            = require('gulp-concat'); //joining files
-var notify            = require('gulp-notify'); 
-var uglify            = require('gulp-uglify'); //uglifying js
-var bourbon           = require('node-bourbon');
-var svgsprite         = require('gulp-svg-sprite'); //creates svg sprites from source files
-var jshint            = require('gulp-jshint'); // jshint-stylish should be installed too
-var autoprefixer      = require('gulp-autoprefixer');
-var sourcemaps        = require('gulp-sourcemaps');
-var browserify        = require('browserify');
-var babelify          = require('babelify'); //babel-preset-es2015 should be installed too
-var source            = require('vinyl-source-stream');
-var buffer            = require('vinyl-buffer');
-var modernizr         = require('gulp-modernizr');
-var sassvariables     = require('gulp-sass-variables');
-var moduleimporter    = require('sass-module-importer');
-
-
-// TASKS CONFIG
-var svgSymbolsSpriteConfig  = {
+// SVG sprite config
+var svgsprite_config  = {
   mode           : {
     symbol       : {
       dest       : '.',
@@ -58,102 +94,99 @@ var svgSymbolsSpriteConfig  = {
   }
 };
 
-var common_config_vars = {};
-for (var variable in common_config) {
-  common_config_vars['$' + variable.toUpperCase()] = common_config[variable];
+
+// Injecting common_config variables into SASS
+var common_config_sass_vars = {};
+for (var variable in _common_config) {
+  common_config_sass_vars['$_' + variable] = _common_config[variable];
 }
 
 
+
 // TASKS
-gulp.task('svg-sprites', function() {
-  gulp.src('img/svg-sprite-source/*.svg')
-    .pipe(svgsprite(svgSymbolsSpriteConfig)).on('error', function(error){ console.log(error); })
-    .pipe(gulp.dest('./'))
-    .pipe(dev ? notify('SVG sprite created successfully!') : gutil.noop() );
+
+_gulp.task('svg-sprites', function() {
+  _gulp.src('img/svg-sprite-source/*.svg')
+    .pipe(_svgsprite(svgsprite_config)).on('error', function(error){ console.log(error); })
+    .pipe(_gulp.dest('./'))
+    .pipe(is_env_dev ? _notify('SVG sprite created successfully!') : _gutil.noop() );
 });
 
 
-gulp.task('styles', function() {
-  gulp.src(['scss/style.scss'])
-  .pipe(plumber())
-  .pipe( dev ? sourcemaps.init() : gutil.noop() )
-  .pipe(sassvariables(common_config_vars))
-  .pipe(sass({ 
+_gulp.task('styles', function() {
+  _gulp.src(['scss/style.scss'])
+  .pipe(_plumber())
+  .pipe( is_env_dev ? _sourcemaps.init() : _gutil.noop() )
+  .pipe(_sassvariables(common_config_sass_vars))
+  .pipe(_sass({ 
     style: 'expanded',
-    includePaths: [bourbon.includePaths, 'node_modules/susy/sass'],
-    importer: moduleimporter()
+    includePaths: [__dirname + '/node_modules/susy/sass'],
+    importer: _sassmoduleimporter()
   }))
-  .pipe(autoprefixer({
-    browsers: [
-      'last 3 versions'
-    ]
-  }))
-  .pipe(cssnano({
+  .pipe(_autoprefixer())
+  .pipe(_cssnano({
     zindex: false
   }))
-  .pipe(concat('style.css'))
-  .pipe( dev ? sourcemaps.write() : gutil.noop() )
-  .pipe(gulp.dest('./'))
-  .pipe(dev ? notify('CSS compiled and concatenated successfully!') : gutil.noop() );
+  .pipe(_concat('style.css'))
+  .pipe( is_env_dev ? _sourcemaps.write() : _gutil.noop() )
+  .pipe(_gulp.dest('./'))
+  .pipe(is_env_dev ? _notify('CSS compiled and concatenated successfully!') : _gutil.noop() );
 });
 
 
-gulp.task('jshint', function(){
+_gulp.task('jshint', function(){
   var src  = [
     'Gulpfile.js',
     'js/modules/*.js'
   ];
 
-  gulp.src(src)
-    .pipe(jshint())
-    .pipe(jshint.reporter(require('jshint-stylish')));
+  _gulp.src(src)
+    .pipe(_jshint())
+    .pipe(_jshint.reporter(require('jshint-stylish')));
 });
 
 
-gulp.task('modernizr', function(){
+_gulp.task('modernizr', function(){
   var src = [
     './js/scripts.min.js',
     './style.css'
   ];
 
-  gulp.src(src)
-    .pipe(modernizr('modernizr.min.js', {
+  _gulp.src(src)
+    .pipe(_modernizr('modernizr.min.js', {
       options: ['setClasses'],
       classPrefix: 'js-supports-'
     }))
-    .pipe(uglify())
-    .pipe(gulp.dest('js'))
-    .on('error', gutil.log);
+    .pipe(_uglify())
+    .pipe(_gulp.dest('js'))
+    .on('error', _gutil.log);
 });
 
 
-gulp.task('scripts', function(){
-  var bundler = browserify('js/main.js');
+_gulp.task('scripts', function(){
+  var bundler = _browserify('js/main.js');
 
-  bundler.transform(babelify, {
+  bundler.transform(_babelify, {
       presets: ['es2015']
     })
     .bundle()
-    .on('error', gutil.log)
-    .pipe(source('scripts.min.js'))
-    .pipe(buffer())
+    .on('error', _gutil.log)
+    .pipe(_source('scripts.min.js'))
+    .pipe(_buffer())
     // don't uglify if we're in local environment, do uglify if it's something other
-    .pipe(dev ? gutil.noop() : uglify())
-    .pipe(gulp.dest('js'))
-    .pipe(dev ? notify('JS compiled and concatenated successfully!') : gutil.noop());
+    .pipe(is_env_dev ? _gutil.noop() : _uglify())
+    .pipe(_gulp.dest('js'))
+    .pipe(is_env_dev ? _notify('JS compiled and concatenated successfully!') : _gutil.noop());
 });
 
 
-var libs_copied_from_modules  = [
-  'node_modules/jquery/dist/jquery.min.js'
-];
-gulp.task('copy_to_libs', () => gulp
-  .src(libs_copied_from_modules)
-  .pipe(gulp.dest('js/libs'))
+_gulp.task('copy_to_libs', () => _gulp
+  .src(libs_copied_from_nodemodules)
+  .pipe(_gulp.dest('js/libs'))
 );
 
 
-gulp.task('default', [
+_gulp.task('default', [
   'copy_to_libs',
   'styles',
   'scripts',
@@ -164,25 +197,26 @@ gulp.task('default', [
 
 
 // WATCH
-gulp.task('watch', ['default'], function(){
+
+_gulp.task('watch', ['default'], function(){
   // Gulpfile.js:
-  gulp.watch('Gulpfile.js', [
+  _gulp.watch('Gulpfile.js', [
     'jshint'
   ]);
 
   // Scripts:
-  gulp.watch('js/modules/*.js', [
+  _gulp.watch(['js/main.js', 'js/modules/*.js'], [
     'jshint',
     'scripts'
   ]);
 
   // Styles:
-  gulp.watch('scss/**/*.scss', [
+  _gulp.watch('scss/**/*.scss', [
     'styles'
   ]);
 
   // SVG:
-  gulp.watch('img/svg-sprite-source/*.svg', [
+  _gulp.watch('img/svg-sprite-source/*.svg', [
     'svg-sprites'
   ]);  
 });
