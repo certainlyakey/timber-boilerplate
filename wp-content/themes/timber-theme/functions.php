@@ -40,6 +40,8 @@ require_once( $functions_path . 'frontend-functions.php');
 require_once( $functions_path . 'admin-hooks.php');
 
 // Plugins dependent functions and hooks
+require_once( $functions_path . 'plugins/custom-fields.php');
+require_once( $functions_path . 'plugins/acf.php');
 require_once( $functions_path . 'plugins/plugin.php');
 
 // Specific templates related non Twig functions (pre_get_posts, etc.)
