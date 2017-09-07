@@ -14,9 +14,9 @@ $unit-x:10px;
 $unit-y:$unit-x;
 
 //Spacing
-$total-cols:$susy-columns-number;
-$gutter:$susy-gutter-width;
-$col:$susy-column-width;
+$total-cols:map-get($susy, columns);
+$col:map-get($susy, column-width);
+$gutter:map-get($susy, gutters) * $col;
 
 //Typography
 // xxs-xs-s-[m]-l-xl-xxl

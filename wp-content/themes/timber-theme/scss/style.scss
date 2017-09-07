@@ -6,8 +6,6 @@ Version:      1.0
 Author:       Aleksandr Beliaev
 */
 
-// See the wiki for the explanation on what different files do
-
 // !Dependencies
 @import '_dependencies';
 @import '_vendors';
@@ -21,7 +19,7 @@ Author:       Aleksandr Beliaev
 @import 'abstracts/_grid-settings';
 @import 'abstracts/_variables';
 @import 'abstracts/_mixins';
-@import 'abstracts/_animations';
+// @import 'abstracts/_animations';
 @import 'abstracts/_textcontent-mixins';
 @import 'abstracts/objects/_example-object';
 
