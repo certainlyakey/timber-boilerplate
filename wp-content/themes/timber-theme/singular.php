@@ -9,7 +9,7 @@ $context['post'] = $post;
 if ( post_password_required( $post->ID ) ) {
   Timber::render( 'single-password.twig', $context );
 } elseif (get_post_type($post) == 'page') {
-  Timber::render('page.twig', 'singular.twig', $context);
+  Timber::render(array('page.twig', 'singular.twig'), $context);
 } else {
   Timber::render( array( 'single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig', 'singular.twig' ), $context );
 }
