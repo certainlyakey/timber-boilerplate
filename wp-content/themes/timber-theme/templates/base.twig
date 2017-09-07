@@ -26,10 +26,9 @@
 
       </main><!-- /.c-content-area -->
     </div><!-- /.c-page-wrapper -->
-
-    {% block footer_before %}
-      {% include 'partials/posts-partial.twig' %}
-    {% endblock %}
+    
+    {# a block ready to be filled with some default content (but blank for now) #}
+    {% block footer_before '' %}
 
     {% block footer %}
       <footer class="c-footer">
