@@ -1,0 +1,15 @@
+{% if posts %}
+
+  <section>
+    <header>
+    </header>
+
+    <ul>
+      {% for post in posts %}
+        {% include 'partials/post-partial.twig' with {'post':post} %}
+      {% endfor %}
+    </ul>
+    
+  </section>
+  
+{% endif %}
