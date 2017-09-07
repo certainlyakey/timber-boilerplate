@@ -1,0 +1,4 @@
+<?php
+/**
+ * Footer related functions
+ */
