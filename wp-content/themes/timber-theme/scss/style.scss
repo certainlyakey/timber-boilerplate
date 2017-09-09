@@ -10,11 +10,6 @@ Author:       Aleksandr Beliaev
 @import '_dependencies';
 @import '_vendors';
 
-// !Global abstracts — can be transferred from project to project
-@import 'abstracts/global/_functions';
-@import 'abstracts/global/_variables';
-@import 'abstracts/global/_mixins';
-
 // !Site abstracts
 @import 'abstracts/_grid-settings';
 @import 'abstracts/_variables';
