@@ -96,6 +96,7 @@ Thumbs.db
 !.gitignore
 !.editorconfig
 !.jshintrc
+!.sass-lint.yml
 !README.md
 !CHANGELOG.md
 !composer.json
