@@ -124,7 +124,7 @@ _gulp.task('sass-lint', function () {
 });
 
 
-_gulp.task('styles', ["sass-lint"], function() {
+_gulp.task('styles', ['sass-lint'], function() {
   _gulp.src(['scss/style.scss'])
   .pipe(_plumber())
   .pipe( is_env_dev ? _sourcemaps.init() : _gutil.noop() )

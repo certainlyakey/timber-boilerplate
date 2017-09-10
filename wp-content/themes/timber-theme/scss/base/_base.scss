@@ -1,6 +1,7 @@
+// sass-lint:disable no-important, no-universal-selectors
 body {
   background-color:$color-bg; 
-  font:#{$fs}/#{$lh} $ff; 
+  font:#{$fs} / #{$lh} $ff; 
 }
 
 a {
@@ -20,6 +21,6 @@ a {
 }
 
 .u-link-button {
-  @extend .u-link;
+  @include t-link-base;
   @include u-remove-button-styling;
 }

@@ -2,6 +2,7 @@
 // please keep here only those mixins that are related to single post styling 
 
 @mixin t-textcontent {
+  // sass-lint:disable-block force-element-nesting
   // preventing text styles leaking into widgets pasted into content area via shortcodes
   &> {
     blockquote {
@@ -37,7 +38,7 @@
     }
     ul, ol {
       li li {
-        padding-left:$unit-x*2; 
+        padding-left:$unit-x * 2; 
       }
     }
     pre {

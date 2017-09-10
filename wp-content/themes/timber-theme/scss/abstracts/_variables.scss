@@ -20,7 +20,7 @@ $gutter:map-get($susy, gutters) * $col;
 
 //Typography
 // xxs-xs-s-[m]-l-xl-xxl
-$ff:"Helvetica Neue", Helvetica, Arial, sans-serif;
+$ff:'Helvetica Neue', Helvetica, Arial, sans-serif;
 $fs-s:14px;
 $fs:16px;
 $fs-l:20px;
@@ -47,9 +47,10 @@ $lh-xxxl:1;
 
 //Excluded selectors (only simple selectors)
 // use @include t-focused with arguments to set your own styling when element is focused
-$classes-exclude-from-focus:
+$classes-exclude-from-focus: (
   'c-selector-1'
-  'c-selector-2';
+  'c-selector-2'
+);
 
 
 //Breakpoints
