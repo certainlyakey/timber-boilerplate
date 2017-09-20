@@ -1,8 +1,17 @@
+{# 
+  Item classes legend:
+  __item — all items
+  __subitem — all items on 2nd and deeper levels
+  __level-x-item -- all items on specific level
+#}
+
 {% if menu %}
   {% spaceless %}
     {% set listclass = [] %}
     {% if is_submenu is defined and is_submenu == true %}
       {% set listclass = listclass|merge([ baseclass ~ '__submenu' ]) %}
+      {% set first_subitem = menu|first %}
+      {% set listclass = listclass|merge([ baseclass ~ '__level-' ~ (first_subitem.level + 1) ~ '-menu' ]) %}
     {% else %}
       {% set listclass = listclass|merge([ baseclass ~ '__list' ]) %}
     {% endif %}
@@ -12,15 +21,18 @@
       {# {% set itemclasses = item.classes %} #}
       {% set itemclasses = [] %}
       {% if is_submenu is defined and is_submenu == true %}
-        {% set itemclasses = itemclasses|merge([ baseclass ~ '__subitem' ]) %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__subitem', baseclass ~ '__level-' ~ (item.level + 1) ~ '-item' ]) %}
       {% else %}
-        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item' ]) %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__level-1-item' ]) %}
       {% endif %}
       {% if item.current %}
         {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_current' ]) %}
       {% endif %}
       {% if item.current_item_parent %}
         {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_current-parent' ]) %}
+      {% endif %}
+      {% if item.get_children %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_has-submenu' ]) %}
       {% endif %}
       <li class="{{ itemclasses | join(' ') }}">
         <a class="{{ baseclass }}__link" href="{{item.get_link}}">{{item.title}}</a>
