@@ -11,9 +11,9 @@
     {% if is_submenu is defined and is_submenu == true %}
       {% set listclass = listclass|merge([ baseclass ~ '__submenu' ]) %}
       {% set first_subitem = menu|first %}
-      {% set listclass = listclass|merge([ baseclass ~ '__level-' ~ (first_subitem.level + 1) ~ '-menu' ]) %}
+      {% set listclass = listclass|merge([ baseclass ~ '__menu_level-' ~ (first_subitem.level + 1) ]) %}
     {% else %}
-      {% set listclass = listclass|merge([ baseclass ~ '__list' ]) %}
+      {% set listclass = listclass|merge([ baseclass ~ '__list', baseclass ~ '__menu_level-1' ]) %}
     {% endif %}
     
     <ul class="{{ listclass | join(' ') }}">
@@ -21,9 +21,9 @@
       {# {% set itemclasses = item.classes %} #}
       {% set itemclasses = [] %}
       {% if is_submenu is defined and is_submenu == true %}
-        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__subitem', baseclass ~ '__level-' ~ (item.level + 1) ~ '-item' ]) %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__subitem', baseclass ~ '__item_level-' ~ (item.level + 1) ]) %}
       {% else %}
-        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__level-1-item' ]) %}
+        {% set itemclasses = itemclasses|merge([ baseclass ~ '__item', baseclass ~ '__item_level-1' ]) %}
       {% endif %}
       {% if item.current %}
         {% set itemclasses = itemclasses|merge([ baseclass ~ '__item_current' ]) %}
