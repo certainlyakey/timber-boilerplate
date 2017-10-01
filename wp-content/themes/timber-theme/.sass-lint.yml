@@ -50,7 +50,7 @@ rules:
   no-vendor-prefixes: 2
   no-warn: 0
   property-units:
-  - 0
+  - 1
   -
     global: ['rem', 'em', 'vw', 'vh', 's', 'ms']
 

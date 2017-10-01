@@ -30,7 +30,8 @@
     "normalize.css": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "sass-rem": "^2.0.0"
   },
   "browserslist": [
     "last 3 versions"

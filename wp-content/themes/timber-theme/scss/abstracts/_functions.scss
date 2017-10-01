@@ -1,0 +1,9 @@
+// replace sass-rem function with a dummy function in local environments
+// this allows us to have pixels in browsers on local instead of rems for easier testing
+@function rem-calc($val) {
+  @if $_is-env-dev == true {
+    @return $val;
+  } @else {
+    @return rem($val);
+  }
+}

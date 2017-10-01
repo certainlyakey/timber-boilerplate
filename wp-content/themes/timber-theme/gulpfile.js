@@ -103,7 +103,7 @@ var common_config_sass_vars = {};
 for (var variable in _common_config) {
   common_config_sass_vars['$_' + variable] = _common_config[variable];
 }
-
+common_config_sass_vars['$_is-env-dev'] = is_env_dev;
 
 
 // TASKS
