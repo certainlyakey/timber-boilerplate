@@ -12,7 +12,9 @@ Author:       Aleksandr Beliaev
 
 // !Site abstracts
 @import 'abstracts/grid-settings';
-@import 'abstracts/variables';
+@import 'abstracts/variables/colors';
+@import 'abstracts/variables/typography';
+@import 'abstracts/variables/others';
 @import 'abstracts/mixins';
 // @import 'abstracts/animations';
 @import 'abstracts/textcontent-mixins';

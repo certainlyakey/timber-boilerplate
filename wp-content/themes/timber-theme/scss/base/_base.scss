@@ -1,7 +1,7 @@
 // sass-lint:disable no-important, no-universal-selectors
 body {
+  @include u-set-typography;
   background-color:$color-bg; 
-  font:#{$fs} / #{$lh} $ff; 
 }
 
 a {

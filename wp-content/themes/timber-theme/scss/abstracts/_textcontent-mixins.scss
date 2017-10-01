@@ -3,34 +3,38 @@
 
 @mixin t-textcontent {
   // sass-lint:disable-block force-element-nesting
+
   // preventing text styles leaking into widgets pasted into content area via shortcodes
   &> {
     blockquote {
       font-style:italic; 
     }
-    h1, h2 {
-      @include t-heading-xxl;
-    }
-    h3 {
-      @include t-heading-xl;
-    }
-    h4 {
-      @include t-heading-l;
-    }
-    h5 {
-      @include t-heading-m;
-    }
-    h6 {
-      @include t-heading-s;
-    }
+    // h2 {
+    //   @include t-heading-xxxl;
+    // }
+    // h3 {
+    //   @include t-heading-xxl;
+    // }
+    // h4 {
+    //   @include t-heading-xl;
+    // }
+    // h5 {
+    //   @include t-heading-l;
+    // }
+    // h6 {
+    //   @include t-heading-m;
+    // }
     p, ul, ol {
       &:not(:only-child) {
         @include u-spacing-y($unit-y, 'margin');
       }
     }
-    h1, h2, h3, h4, h5, h6, p, ul, ol {
+    h2, h3, h4, h5, h6, p, ul, ol {
       &:first-child {
         margin-top:0; 
+      }
+      &:last-child {
+        margin-bottom:0; 
       }
     }
     ul li {
@@ -41,10 +45,6 @@
         padding-left:$unit-x * 2; 
       }
     }
-    pre {
-      padding:$unit-y $unit-x; 
-      background-color:$color-bg; 
-    }
   }
   img {
     display:block; 
@@ -52,42 +52,33 @@
       @include u-image-autowidth;
     }
   }
+  iframe {
+    width:100%; 
+  }
 }
 
 
-@mixin t-heading-s {
-  font-style:italic; 
-  font-weight:bold; 
-}
+// ~ heading level 2
+// @mixin t-heading-xxxl {
+//   @include u-set-typography('body', 'big-heading');
+// }
 
 
-@mixin t-heading-m {
-  font-weight:bold; 
-}
+// ~ heading level 3
+// @mixin t-heading-xxl {
+// }
 
 
-@mixin t-heading-l {
-  font-size:$fs-l; 
-  line-height:$lh-l; 
-}
+// // ~ heading level 4
+// @mixin t-heading-xl {
+// }
 
 
-@mixin t-heading-xl {
-  font-weight:bold; 
-  font-size:$fs-xl; 
-  line-height:$lh-xl; 
-}
+// // ~ heading level 5
+// @mixin t-heading-l {
+// }
 
 
-@mixin t-heading-xxl {
-  font-weight:bold; 
-  font-size:$fs-xxl; 
-  line-height:$lh-xxl; 
-}
-
-
-@mixin t-heading-xxxl {
-  font-weight:bold; 
-  font-size:$fs-xxxl; 
-  line-height:$lh-xxxl; 
-}
+// // ~ heading level 6
+// @mixin t-heading-m {
+// }

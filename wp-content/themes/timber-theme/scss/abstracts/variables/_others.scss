@@ -1,13 +1,5 @@
-// Site variables
+// sass-lint:disable variable-name-format
 
-// Colors
-$color-pomegranate:#ee2d29;
-$color-concrete:#f3f3f3;
-
-$color-accent:$color-pomegranate;
-
-$color-link:$color-accent;
-$color-bg:white;
 
 //Proportions
 $unit-x:10px;
@@ -17,22 +9,6 @@ $unit-y:$unit-x;
 $total-cols:map-get($susy, columns);
 $col:map-get($susy, column-width);
 $gutter:map-get($susy, gutters) * $col;
-
-//Typography
-// xxs-xs-s-[m]-l-xl-xxl
-$ff:'Helvetica Neue', Helvetica, Arial, sans-serif;
-$fs-s:14px;
-$fs:16px;
-$fs-l:20px;
-$fs-xl:22px;
-$fs-xxl:24px;
-$fs-xxxl:40px;
-$fs-xxxxl:71px;
-$lh:1.333;
-$lh-l:1.25;
-$lh-xl:1.167;
-$lh-xxl:1;
-$lh-xxxl:1;
 
 //Width
 

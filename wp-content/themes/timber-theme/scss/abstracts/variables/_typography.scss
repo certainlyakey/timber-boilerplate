@@ -1,0 +1,29 @@
+// sass-lint:disable variable-name-format
+$ff-body:'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+$font-size-base:16px;
+
+// A map containing the basic typography for all the site
+// The 2nd level of the map (body and heading) corresponds to the main typefaces.
+// The 3rd level of the map corresponds to font property combinations that frequently go together. Any arbitrary word goes as a group name. The properties are usually font-size and line-height but can be also any other. Please avoid including color and other non typography properties here, though.
+// Usage: @include u-set-typography($typeface, $style-name);
+$font-styles: (
+  
+  'body': ( // aka Helvetica Neue
+
+    'regular': (
+      font-size:$font-size-base,
+      line-height:1.6
+    ),
+  ),
+
+  // 'heading': ( // aka heading font
+
+  //   'section-title': (
+  //     font-size:16px,
+  //     line-height:1
+  //   ),
+  // )
+
+);
