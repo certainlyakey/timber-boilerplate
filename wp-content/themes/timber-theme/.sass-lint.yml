@@ -52,7 +52,7 @@ rules:
   property-units:
   - 0
   -
-    global: ['rem', 'em']
+    global: ['rem', 'em', 'vw', 'vh', 's', 'ms']
 
   # Nesting
   declarations-before-nesting: 1
@@ -65,7 +65,7 @@ rules:
   class-name-format:
   - 1
   -
-    convention: 'hyphenatedbem'
+    convention: 'strictbem'
   function-name-format: 1
   id-name-format: 1
   mixin-name-format: 1
