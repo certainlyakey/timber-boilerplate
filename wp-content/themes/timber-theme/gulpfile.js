@@ -57,8 +57,6 @@ var _sassvariables      = require('gulp-sass-variables');
 // Allows to inject css @imports instead of just linking to them (Sass doesn't have this option by default)
 var _sassmoduleimporter = require('sass-module-importer');
 
-// Lints SCSS
-var _sasslint           = require('gulp-sass-lint');
 
 
 // TASKS CONFIG
@@ -116,15 +114,20 @@ _gulp.task('svg-sprites', function() {
 });
 
 
-// Lint sass. Configuration found in .sass-lint.yml
-_gulp.task('sass-lint', function () {
-  return _gulp.src('scss/**/*.scss')
-    .pipe(_sasslint())
-    .pipe(_sasslint.format());
+_gulp.task('lint-css', function lintCssTask() {
+  const _gulp_stylelint = require('gulp-stylelint');
+
+  return _gulp
+    .src('scss/**/*.scss')
+    .pipe(_gulp_stylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
 });
 
 
-_gulp.task('styles', ['sass-lint'], function() {
+_gulp.task('styles', ['lint-css'], function() {
   _gulp.src(['scss/style.scss'])
   .pipe(_plumber())
   .pipe( is_env_dev ? _sourcemaps.init() : _gutil.noop() )

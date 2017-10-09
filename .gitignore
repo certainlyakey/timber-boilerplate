@@ -98,6 +98,7 @@ Thumbs.db
 !.editorconfig
 !.jshintrc
 !.sass-lint.yml
+!.stylelintrc.json
 !README.md
 !CHANGELOG.md
 !composer.json

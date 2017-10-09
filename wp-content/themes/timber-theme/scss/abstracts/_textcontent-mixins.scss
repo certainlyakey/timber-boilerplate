@@ -2,10 +2,10 @@
 // please keep here only those mixins that are related to single post styling 
 
 @mixin t-textcontent {
-  // sass-lint:disable-block force-element-nesting
+  /* stylelint-disable selector-max-type, selector-max-compound-selectors */
 
   // preventing text styles leaking into widgets pasted into content area via shortcodes
-  &> {
+  & > {
     blockquote {
       font-style:italic; 
     }

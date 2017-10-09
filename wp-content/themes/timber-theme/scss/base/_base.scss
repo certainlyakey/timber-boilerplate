@@ -1,4 +1,4 @@
-// sass-lint:disable no-important, no-universal-selectors
+/* stylelint-disable declaration-no-important, selector-max-universal */
 body {
   @include u-set-typography;
   background-color:$color-bg; 
