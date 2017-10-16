@@ -24,13 +24,13 @@
         {% endif %}
 
         {% if page.class == 'dots' %}
-          <span class="c-posts-pagination__item">{{page.title}}</span>
+          <span class="c-posts-pagination__item c-posts-pagination__dots">{{page.title}}</span>
         {% endif %}
 
       {% endfor %}
 
       {% if before_after and pagination.next %}
-        <a href="{{pagination.next.link}}" aria-label="{{ __('Go to next page', 'theme_domain') }}" class="c-posts-pagination__next">{{ __('Next', 'theme_domain') }}</a>
+        <a href="{{pagination.next.link}}" aria-label="{{ __('Go to next page', 'theme_domain') }}" class="c-posts-pagination__item c-posts-pagination__item_next">{{ __('Next', 'theme_domain') }}</a>
       {% endif %}
 
     </nav>
