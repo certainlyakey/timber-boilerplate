@@ -57,6 +57,8 @@ var _sassvariables      = require('gulp-sass-variables');
 // Allows to inject css @imports instead of just linking to them (Sass doesn't have this option by default)
 var _sassmoduleimporter = require('sass-module-importer');
 
+// Compile localization files from .po to .mo
+var _gettext            = require('gulp-gettext');
 
 
 // TASKS CONFIG
@@ -194,6 +196,13 @@ _gulp.task('scripts', function(){
 });
 
 
+_gulp.task('po_to_mo', () => {
+  _gulp.src('languages/*.po')
+    .pipe(_gettext())
+    .pipe(_gulp.dest('languages'));
+});
+
+
 _gulp.task('copy_to_libs', () => _gulp
   .src(libs_copied_from_nodemodules)
   .pipe(_gulp.dest('js/libs'))
@@ -205,7 +214,8 @@ _gulp.task('default', [
   'styles',
   'scripts',
   'svg-sprites',
-  'modernizr'
+  'modernizr',
+  'po_to_mo'
 ]);
 
 
@@ -233,4 +243,9 @@ _gulp.task('watch', ['default'], function(){
   _gulp.watch('img/svg-sprite-source/*.svg', [
     'svg-sprites'
   ]);  
+
+  // .po files:
+  _gulp.watch('languages/*.po', [
+    'po_to_mo'
+  ]);
 });

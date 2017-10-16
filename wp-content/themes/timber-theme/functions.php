@@ -44,5 +44,5 @@ require_once( $functions_path . 'plugins/custom-fields.php');
 require_once( $functions_path . 'plugins/acf.php');
 require_once( $functions_path . 'plugins/plugin.php');
 
-// Specific templates related non Twig functions (pre_get_posts, etc.)
+// Alter main query for specific templates (aka pre_get_posts)
 require_once( $functions_path . 'templates/archive-post-type.php');

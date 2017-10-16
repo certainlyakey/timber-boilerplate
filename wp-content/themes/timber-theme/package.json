@@ -33,7 +33,8 @@
     "sass-rem": "^2.0.0",
     "gulp-stylelint": "^5.0.0",
     "stylelint-config-recommended-scss": "^2.0.0",
-    "stylelint-scss": "^2.0.0"
+    "stylelint-scss": "^2.0.0",
+    "gulp-gettext": "^0.3.0"
   },
   "browserslist": [
     "last 3 versions"
