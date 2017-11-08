@@ -46,7 +46,7 @@ Don't use extends unless they're provided by an external tool (such as `svg-spri
 Installation
 ------------
 
-The local installation is meant to be done with VVV, Wordpress-tailored Vagrant configuration. It's also easiest if along with VVV one uses VV tool to create a new site within the VVV virtual machine. But as there're no hard dependencies except for `gulp`, it can also be installed in any other manner.
+The local installation is meant to be done with VVV2, Wordpress-tailored Vagrant configuration. But as there're no hard dependencies except for `gulp`, it can also be installed in any other manner.
 
 1. install [Varying Vagrant Vagrants, or VVV](https://github.com/Varying-Vagrant-Vagrants/VVV "https://github.com/Varying-Vagrant-Vagrants/VVV") (1.40 is ok) with all the required prerequisites
 
@@ -102,3 +102,11 @@ Development notes
 - Theme functions are organized into several includes, if adding something try to find an appropriate include for that. Each file's purpose is described in its comment section.
 
 - Functions should be prefixed with a theme specific prefix.
+
+
+Ideas for future Development
+----------------------------
+
+1. stylelint check for raw pixel values excluding `rem-calc`-like functions with `certainlyakey/stylelint-no-px`
+2. stylelint check for browser incompatibilities with `certainlyakey/stylelint-no-px`
+3. stylelint check for incorrect imports with `certainlyakey/stylelint-at-rule-import-path`
