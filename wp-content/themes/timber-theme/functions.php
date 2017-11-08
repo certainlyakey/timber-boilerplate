@@ -46,4 +46,4 @@ require_once( $functions_path . 'plugins/acf.php');
 require_once( $functions_path . 'plugins/plugin.php');
 
 // Alter main query for specific templates (aka pre_get_posts)
-require_once( $functions_path . 'templates/archive-post-type.php');
+require_once( $functions_path . 'alter-the-loop/alter-archive-post-type.php');
