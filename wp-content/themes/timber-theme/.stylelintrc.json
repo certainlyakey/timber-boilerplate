@@ -5,7 +5,7 @@
   ],
   "rules": {
     "block-no-empty": null,
-    "comment-word-blacklist": [["/^todo/i", "/^hack/i"], {"severity": "warning", "message":"A todo or hack comment was found. Consider resolving the issue in future"}],
+    "comment-word-blacklist": [["/\\s?todo\\s/i", "/\\s?hack\\s/i"], {"severity": "warning", "message":"A todo or hack comment was found. Consider resolving the issue in future"}],
     "selector-class-pattern": ["^((c-|u-|s-|no-|has-|state-|is-|js-|size-)[a-z]+|js)", {"resolveNestedSelectors":true, "message":"Please use namespacing (prefixes) when naming classes. See https://gist.github.com/stephenway/a6145d9b4430e8c55a77 for the namespaces this project uses."}],
     "rule-empty-line-before": null,
     "string-no-newline": null,
