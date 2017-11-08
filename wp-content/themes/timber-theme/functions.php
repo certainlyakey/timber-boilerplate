@@ -18,6 +18,7 @@ require_once( $functions_path . 'common-variables.php');
 
 // Timber setup
 require_once( $functions_path . 'timber/timber-setup.php');
+require_once( $functions_path . 'timber/extend-twig.php');
 require_once( $functions_path . 'timber/timber-extend-site.php');
 require_once( $functions_path . 'timber/timber-extend-post.php');
 
