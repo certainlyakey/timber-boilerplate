@@ -11,31 +11,35 @@
       {% if before_after and pagination.prev %}
         {# A workaround for Loco Translate to be able to scan strings that are located inside HTML attributes #}
         {% set prev_label = __('Go to previous page', 'theme_domain') %}
-        <a href="{{ pagination.prev.link }}" aria-label="{{ prev_label }}" class="c-posts-pagination__item c-posts-pagination__item_prev">{{ __('Previous', 'theme_domain') }}</a>
+        <a href="{{ pagination.prev.link }}" aria-label="{{ prev_label }}" class="c-posts-pagination__item c-posts-pagination__item_prev c-posts-pagination__item_link">{{ __('Previous', 'theme_domain') }}</a>
       {% endif %}
 
-      {% for page in pagination.pages %}
+      {% if numbered %}
 
-        {% if page.link %}
-          {# use page.class to assign Wordpress classes #}
-          {% set page_label = __('Page', 'theme_domain') ~ ' ' ~ page.title %}
-          <a href="{{ page.link }}" aria-label="{{ page_label }}" class="c-posts-pagination__item c-posts-pagination__item_link">{{ page.title }}</a>
-        {% endif %}
+        {% for page in pagination.pages %}
 
-        {% if page.current %}
-          {% set current_label = __('Current page', 'theme_domain') ~ ', ' ~ __('page', 'theme_domain') ~ ' ' ~ page.title %}
-          <span tabindex="0" aria-label="{{ current_label }}" aria-current="true" class="c-posts-pagination__item c-posts-pagination__item_current">{{ page.title }}</span>
-        {% endif %}
+          {% if page.link %}
+            {# use page.class to assign Wordpress classes #}
+            {% set page_label = __('Page', 'theme_domain') ~ ' ' ~ page.title %}
+            <a href="{{ page.link }}" aria-label="{{ page_label }}" class="c-posts-pagination__item c-posts-pagination__item_link">{{ page.title }}</a>
+          {% endif %}
 
-        {% if page.class == 'dots' %}
-          <span class="c-posts-pagination__item c-posts-pagination__dots">{{ page.title }}</span>
-        {% endif %}
+          {% if page.current %}
+            {% set current_label = __('Current page', 'theme_domain') ~ ', ' ~ __('page', 'theme_domain') ~ ' ' ~ page.title %}
+            <span tabindex="0" aria-label="{{ current_label }}" aria-current="true" class="c-posts-pagination__item c-posts-pagination__item_current">{{ page.title }}</span>
+          {% endif %}
 
-      {% endfor %}
+          {% if page.class == 'dots' %}
+            <span class="c-posts-pagination__item c-posts-pagination__dots">{{ page.title }}</span>
+          {% endif %}
+
+        {% endfor %}
+
+      {% endif %}
 
       {% if before_after and pagination.next %}
         {% set next_label = __('Go to next page', 'theme_domain') %}
-        <a href="{{ pagination.next.link }}" aria-label="{{ next_label }}" class="c-posts-pagination__item c-posts-pagination__item_next">{{ __('Next', 'theme_domain') }}</a>
+        <a href="{{ pagination.next.link }}" aria-label="{{ next_label }}" class="c-posts-pagination__item c-posts-pagination__item_next c-posts-pagination__item_link">{{ __('Next', 'theme_domain') }}</a>
       {% endif %}
 
     </nav>
