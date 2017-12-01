@@ -13,8 +13,8 @@ add_theme_support( 'html5', array( 'search-form', 'caption', 'gallery' ) );
 
 
 //Load localization domain
-function themedomain_load_localisation(){
+function themeprefix_load_localisation(){
   load_theme_textdomain('themedomain', get_template_directory() . '/languages');
 }
 
-add_action( 'after_setup_theme', 'themedomain_load_localisation' );
+add_action( 'after_setup_theme', 'themeprefix_load_localisation' );

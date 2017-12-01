@@ -16,5 +16,5 @@ update_option( 'large_size_w', 1050 );
 
 $content_sizes = array('thumbnail','medium','large');
 foreach ($content_sizes as $content_size) {
-  update_option( $content_size. '_size_h', 9999 );
+  update_option( $content_size. '_size_h', 0 );
 }
