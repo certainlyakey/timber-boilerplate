@@ -11,14 +11,14 @@ function themeprefix_acf_add_php_fields() {
 
   if (function_exists('acf_add_local_field_group')) {
     // Add your field group registration code in a separate file, one group per file
-    // require_once( $fields_path . 'field_group.php');
+    // require_once( $fields_path . 'fields_group.php');
 
     // File naming convention:
-    // fields per site — global_*
-    // fields for a post of a specific post type — posttype_{posttype-name}
-    // fields for all posts of a specific post type  — posttype-common_{posttype-name}
-    // fields of a specific page template — page_{page-template-name}
-    // fields for a term of specific taxonomy — taxonomy_{page-template-name}
+    // fields per site — fields_global_* (example: fields_global_analytics.php)
+    // fields for a post of a specific post type — fields_posttype_{posttype-name} (example: fields_posttype_pages.php)
+    // fields for all posts of a specific post type  — fields_posttype-common_{posttype-name} (example: fields_posttype-common_posts.php)
+    // fields of a specific page template or home/front page — fields_page_{page-template-name} (example: fields_page_front-page.php)
+    // fields for a term of specific taxonomy — fields_taxonomy_{page-template-name} (example: fields_taxonomy_categories.php)
   }
 }
 add_action('acf/init', 'themeprefix_acf_add_php_fields');

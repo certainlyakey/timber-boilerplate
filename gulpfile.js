@@ -72,7 +72,7 @@ var libs_copied_from_nodemodules  = [
 
 // Environment variables
 // if defined in a .env file or if defined as a gulp commandline argument (gulp --env=true)
-var is_env_dev = false;
+var is_env_dev = true;
 if (typeof process.env.ENV !== 'undefined') {
   is_env_dev = (process.env.ENV === 'dev');
 }

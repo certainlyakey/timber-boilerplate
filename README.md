@@ -1,12 +1,22 @@
-Timber theme boilerplate
-======================
+# Timber theme boilerplate
 
-Project architecture
----------------
+## Theme highlights
 
-The project is using [Timber](http://timber.github.io/timber/ "http://timber.github.io/timber/"), building theme markup in Twig. Each template has its logic in a usual Wordpress template (for example, `home.php`) with a Twig counterpart (usually of the same name) responsible for the actual markup, in `templates` folder. The main parent layout is located in `base.twig`. See the Timber documentation for more information.
+- [Timber](https://timber.github.io/docs/) (Twig) based templates. Put logic in usual wordpress PHP templates, relate it to a Twig template by assigning to the `$context[]` variable, add corresponding templates in `<themename>/templates` folder;
+- BEM methodology for markup/CSS. The project frontend consists of self-contained components. BEM naming convention is `component__element_modifier`. Avoid all the things that you would avoid in a typical BEM-like project. See below for more information;
+- namespaces for CSS classes aka prefixes. Read below on what prefixes can be used, and see here [why namespacing is cool](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/);
+- stylelint linting. Comments starting from words "todo"/"hack" appear as warnings to bring attention to them;
+- `dotenv` for doing different things depending on local/stg/prod environment;
+- shared variables inside the theme (a variable added to `common_config.json` can be reused in JS/Gulp/SASS/PHP/Twig);
+- npm packages for theme usage;
+- ES2015-enabled modular JS. See below on how to use it;
+- SVG spriting. Put new SVG files to be found in the sprite to `<themename>/img/svg-sprite-source` folder, invoke them with the `image-svg-sprite.twig` partial;
+- Automated Modernizr build based on actually used features only;
+- custom fields registered in code for faster deploying to other environments. 
 
-CSS architecture of the project follows a set of rules to establish better maintainability, reusability, and organization of code. It borrows from several concepts including [BEM](https://bem.info "https://bem.info")/[7-1 pattern](https://sass-guidelin.es/#architecture "https://sass-guidelin.es/#architecture")/[ITCSS](https://speakerdeck.com/dafed/managing-css-projects-with-itcss "https://speakerdeck.com/dafed/managing-css-projects-with-itcss")/[Harry Roberts'namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#the-namespaces "http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#the-namespaces").
+## CSS architecture
+
+CSS architecture of the project follows a set of rules to establish better maintainability, reusability, and organization of code. It borrows from several concepts including [BEM](https://bem.info)/[7-1 pattern](https://sass-guidelin.es/#architecture)/[ITCSS](https://speakerdeck.com/dafed/managing-css-projects-with-itcss)/[Harry Roberts'namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#the-namespaces).
 Every class or mixin should be prefixed. Here's the types of classes/mixins that are used throughout the project:
 
 1. Components (prefixed with `c-`) are potentially reusable mixins that represent independent, fully styled blocks within a page. Where to place: `components/_component-name.scss`.
@@ -31,14 +41,12 @@ When styling a new piece of markup, it's important to see if there's already a c
 
 When styling a group of repeated items (such as a section of teasers) it's preferable to separate the group's own styling and item's inner styling into two different components. This way we can always reapply the item's styling independently somewhere else.
 
-Don't use extends unless they're provided by an external tool (such as `svg-sprite`). [Here's some explanation why this project avoids them](http://csswizardry.com/2016/02/mixins-better-for-performance/ "http://csswizardry.com/2016/02/mixins-better-for-performance/").
+Don't use extends unless they're provided by an external tool (such as `svg-sprite`). [Here's some explanation why this project avoids them](http://csswizardry.com/2016/02/mixins-better-for-performance/).
 
+## Installation
 
-Installation
-------------
-
-The theme is dependent on ACF and Timber Library plugins. Make sure they're installed before activating the theme.
-It can also make use of an `.env` file if it exists in the project. The path to the `.env` file is specified in `gulpfile.js`.
+The theme is dependent on ACF and Timber Library plugins. Make sure they're installed and activated before activating the theme.
+The theme can also make use of an `.env` file if it exists in the project. The path to the `.env` file is specified in `gulpfile.js`.
 
 1. Replace all the instances of `themeprefix` in boilerplate `*.php` files with any prefix wanted;
 
@@ -69,6 +77,10 @@ Development notes
         2. add a line `example_module.init();` again replacing `example_module` with the name of the module.
 
 - Theme functions are organized into several includes, if adding something try to find an appropriate include for that or create a new one. Each file's purpose is described in its comment section.
+
+- When registering new custom fields, you can follow the naming convention of `{posttypename}_{fieldname}` for post custom fields and post-type-wide fields (stored in the `option` table) and `{taxname}_{fieldname}` for term meta fields. This will allow you to use the fields in various smart ways.
+
+- You can use Loco Translate plugin for translation of the English theme strings into another languages (no setup needed, just install it on your local). The plugin will automatically discover all the English strings of the theme and will let you translate them right in the admin. After doing some translations make a commit. The translation file `<theme-path>/languages/<lang-slug>.po` is compiled into the `.mo` file when you save your translation in Loco Translate admin interface and also by a `gulp watch` task.
 
 
 Ideas for future development
