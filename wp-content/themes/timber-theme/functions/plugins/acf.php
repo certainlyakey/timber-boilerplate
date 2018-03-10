@@ -35,5 +35,14 @@ add_filter( 'timber_context', 'themeprefix_acf_global_settings_context' );
 
 
 
+// Wraps field definitions in __() function when exporting to PHP via ACF admin UI
+function themeprefix_acf_localize_fields_when_exporting() {
+  acf_update_setting('l10n_textdomain', 'theme_domain');
+}
+
+add_action('acf/init', 'themeprefix_acf_localize_fields_when_exporting');
+
+
+
 // Disable "Custom fields" menu in admin
 // add_filter('acf/settings/show_admin', '__return_false');
