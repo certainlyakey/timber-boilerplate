@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bundle name="Themedomain">
-  <domain name="themedomain">
-    <project name="Themedomain" slug="themedomain">
+  <domain name="theme_domain">
+    <project>
       <source>
         <directory>.</directory>
       </source>
@@ -9,7 +9,7 @@
         <directory>languages</directory>
       </target>
       <template>
-        <file>languages/themedomain.pot</file>
+        <file>languages/theme_domain.pot</file>
       </template>
     </project>
   </domain>
