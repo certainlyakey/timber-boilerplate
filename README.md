@@ -50,7 +50,7 @@ The theme can also make use of an `.env` file if it exists in the project. The p
 
 1. Replace all the instances of `themeprefix` in boilerplate `*.php` files with any prefix wanted;
 
-2. replace all the instances of `theme_domain` in boilerplate `*.php` and `*.twig` files with your theme's localisation domain;
+2. replace all the instances of `theme_domain` in boilerplate `*.php`, `*.twig` files and the `style.scss` file with your theme's localisation domain;
 
 3. go to the `timber-theme` theme folder, run `npm install`;
 
