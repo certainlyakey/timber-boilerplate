@@ -5,6 +5,7 @@
 var _gulp               = require('gulp');
 
 // Allows to output different builds depending on current environment. .env is located in the root of the repo
+// ignored if .env not found
 var _dotenv             = require('dotenv').config({ path: './../../../.env' });
 
 var _gutil              = require('gulp-util');
@@ -71,7 +72,7 @@ var libs_copied_from_nodemodules  = [
 
 // Environment variables
 // if defined in a .env file or if defined as a gulp commandline argument (gulp --env=true)
-var is_env_dev = true;
+var is_env_dev = false;
 if (typeof process.env.ENV !== 'undefined') {
   is_env_dev = (process.env.ENV === 'dev');
 }
