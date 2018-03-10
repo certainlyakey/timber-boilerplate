@@ -12,7 +12,7 @@
 - ES2015-enabled modular JS. See below on how to use it;
 - SVG spriting. Put new SVG files to be found in the sprite to `<themename>/img/svg-sprite-source` folder, invoke them with the `image-svg-sprite.twig` partial;
 - Automated Modernizr build based on actually used features only;
-- custom fields registered in code for faster deploying to other environments. 
+- custom fields registered in code for faster deployment to other environments. 
 
 ## CSS architecture
 
@@ -66,9 +66,9 @@ Development notes
 
 - The theme Javascript is separated into modules. Each module is merged into the main `scripts.min.js` file which is served on frontend upon gulp compilation. Each time you need to introduce a new script that is not related to others, you will want to create a new module.
 
-    1. duplicate any existing module in the `js/modules` folder (or the provided `example-module.js` file)
+    1. duplicate any existing module in the `js/modules` folder (or the provided `example-module.js` file);
 
-    2. rename it appropriately
+    2. rename it appropriately;
 
     3. open `js/main.js` file and make these changes inside the `jQuery(function($){` block:
 
@@ -78,7 +78,7 @@ Development notes
 
 - Theme functions are organized into several includes, if adding something try to find an appropriate include for that or create a new one. Each file's purpose is described in its comment section.
 
-- When registering new custom fields, you can follow the naming convention of `{posttypename}_{fieldname}` for post custom fields and post-type-wide fields (stored in the `option` table) and `{taxname}_{fieldname}` for term meta fields. This will allow you to use the fields in various smart ways.
+- When registering new custom fields you can follow the naming convention of `{posttypename}_{fieldname}` for post custom fields and post-type-wide fields (stored in the `option` table) and `{taxname}_{fieldname}` for term meta fields. This will allow you to use the fields in various smart ways.
 
 - You can use Loco Translate plugin for translation of the English theme strings into another languages (no setup needed, just install it on your local). The plugin will automatically discover all the English strings of the theme and will let you translate them right in the admin. After doing some translations make a commit. The translation file `<theme-path>/languages/<lang-slug>.po` is compiled into the `.mo` file when you save your translation in Loco Translate admin interface and also by a `gulp watch` task.
 
