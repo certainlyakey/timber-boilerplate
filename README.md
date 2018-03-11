@@ -44,9 +44,11 @@ The theme is dependent on ACF and Timber Library plugins. Make sure they're inst
 The theme can also make use of an `.env` file if it exists in the project. The path to the `.env` file is specified in `gulpfile.js`.
 
 1. Replace all the instances of `themeprefix` in boilerplate `*.php` files with any prefix wanted;
-2. replace all the instances of `theme_domain` in boilerplate `*.php`, `*.twig` files and the `style.scss` file with your theme's localisation domain;
+2. replace all the instances of `theme_domain` in boilerplate `*.php`, `*.twig`, `style.scss`, `loco.xml` files with your theme's localisation domain;
 3. go to the `timber-theme` theme folder, run `npm install`;
 4. run `gulp` to compile theme, `gulp watch` to compile and watch for changes.
+
+You may wish to add `style.css` in the root after first `gulp` execution to the theme's `.gitignore` file (though it's not mandatory).
 
 ## Development notes
 
