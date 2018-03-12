@@ -28,7 +28,6 @@ Every class or mixin should be prefixed. Here's the types of classes/mixins that
 3. Theming mixins (`t-`) — almost same as objects, but these are only related to appearance. Usually are not used alone as well. Where to place: `abstracts/_mixins.scss`;
 4. Utilities are “does one thing”-style mixins. Prefix: `u-`. Where to place: `abstracts/_mixins.scss`;
 5. Scoped mixins (`s-`) - define a separate styling context inside which tag selectors may be used (usually we can only use classes). Only for styling user edited rich content areas (articles body etc.). Where to place: `abstracts/_mixins.scss`;
-6. `p-` — specific page related styling, dependent on Wordpress body classes. Use ONLY if it doesn't make sense to apply any of the existing components or create a new component. Where to place: `pages/_page-name.scss`.
 
 The project also makes use of context dependent prefixes such as `js-`, `has-` and others.
 
