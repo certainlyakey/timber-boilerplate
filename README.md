@@ -11,10 +11,10 @@
 - npm packages for theme usage;
 - ES2015-enabled modular JS. See below on how to use it;
 - SVG spriting. Put new SVG files to be found in the sprite to `<themename>/img/svg-sprite-source` folder, invoke them with the `image-svg-sprite.twig` partial;
-- Automated Modernizr build based on actually used features only;
+- automated Modernizr build based on actually used features only;
 - custom fields registered in code for faster deployment to other environments. 
 
-The theme is best employed with VVV Wordpress project boilerplate but is perfectly fine when used standalone.
+The theme is best served with [VVV Wordpress project boilerplate](https://github.com/certainlyakey/vvv-project-boilerplate) but can be used standalone without any problems.
 
 ## CSS architecture
 
@@ -24,14 +24,15 @@ Every class or mixin should be prefixed. Here's the types of classes/mixins that
 1. Components (prefixed with `c-`) are potentially reusable mixins that represent independent, fully styled blocks within a page. Where to place: `components/_component-name.scss`.
     1. The concept of components is fully compatible with the BEM methodology. They may contain `__elements` and `_modifiers`. Components may itself have a modifier, but a component cannot have a subcomponent — only 1 level of nesting elements inside a component is allowed;
     2. They are applied to the class of the same name in `_main.scss` but also can be applied to other classes as well, without having to add the original class in the markup explicitly and allowing for easy extension (any component can be extended with another component — without drawbacks of `@extend`s). That's why the first argument in the component mixin should always be `$base_class` and its inner elements definitions should start with `#{$base_class}`. See the example component in the `components` folder;
-2. Objects (prefixed `o-`) are structure-related mixins. They usually are not used alone and never applied directly as classes. Where to place: `abstracts/_mixins.scss` for smaller ones or `abstracts/objects/_object-name.scss`;
+    3. Non reusable components used for layout features (such as header, footer, main and so on) are still components, so they should be prefixed and comply to the usual rules. It is not mandatory though to create them as mixins; 
+2. Objects (prefixed `o-`) are structure-related mixins. They are usually not used alone and never applied directly as classes. Where to place: `abstracts/_mixins.scss` for smaller ones or `abstracts/objects/_object-name.scss`;
 3. Theming mixins (`t-`) — almost same as objects, but these are only related to appearance. Usually are not used alone as well. Where to place: `abstracts/_mixins.scss`;
 4. Utilities are “does one thing”-style mixins. Prefix: `u-`. Where to place: `abstracts/_mixins.scss`;
-5. Scoped mixins (`s-`) - define a separate styling context inside which tag selectors may be used (usually we can only use classes). Only for styling user edited rich content areas (articles body etc.). Where to place: `abstracts/_mixins.scss`;
+5. Scoped mixins (`s-`) - define a separate styling context inside which tag selectors may be used (usually we can only use classes). Only for styling user edited rich content areas (articles body etc.). Where to place: `abstracts/_mixins.scss`.
 
 The project also makes use of context dependent prefixes such as `js-`, `has-` and others.
 
-When styling a new piece of markup, it's important to see if there's already a component mixin that fits its design, and if there's, would it be more appropriate to add some new elements to that mixin and then apply it or to create a new component that includes it and add up the difference in styling to the latter.
+When styling a new piece of markup, it's important to see if there's already a component mixin that fits its design. If there is, maybe it would be more appropriate to add some new elements to that mixin and then apply it. An alternative approach is to create a new component that `@include`s another one and add up the difference in styling to the latter.
 
 When styling a group of repeated items (such as a section of teasers) it's preferable to separate the group's own styling and item's inner styling into two different components. This way we can always reapply the item's styling independently somewhere else.
 
@@ -44,6 +45,7 @@ The theme can also make use of an `.env` file if it exists in the project. The p
 
 1. Replace all the instances of `themeprefix` in boilerplate `*.php` files with any prefix wanted;
 2. replace all the instances of `theme_domain` in boilerplate `*.php`, `*.twig`, `style.scss`, `loco.xml` files with your theme's localisation domain;
+3. rename the theme in `style.scss` and `package.json` files appropriately;
 3. go to the `timber-theme` theme folder, run `npm install`;
 4. run `gulp` to compile theme, `gulp watch` to compile and watch for changes.
 
@@ -67,5 +69,5 @@ You may wish to add `style.css` in the root after first `gulp` execution to the 
 ## Ideas for future development
 
 1. add a stylelint check for raw pixel values excluding `rem-calc`-like functions with `certainlyakey/stylelint-no-px`
-2. add a stylelint check for browser incompatibilities with `certainlyakey/stylelint-no-px`
+2. add a stylelint check for browser incompatibilities with `ismay/stylelint-no-unsupported-browser-features`
 3. add a stylelint check for incorrect imports with `certainlyakey/stylelint-at-rule-import-path`
