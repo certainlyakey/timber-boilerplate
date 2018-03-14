@@ -14,7 +14,7 @@
 - automated Modernizr build based on actually used features only;
 - custom fields registered in code for faster deployment to other environments. 
 
-The theme is best served with [VVV Wordpress project boilerplate](https://github.com/certainlyakey/vvv-project-boilerplate) but can be used standalone without any problems.
+The theme is best served with [VVV site template](https://github.com/certainlyakey/vvv-project-boilerplate) but can be used standalone without any problems.
 
 ## CSS architecture
 
