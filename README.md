@@ -71,3 +71,4 @@ You may wish to add `style.css` in the root after first `gulp` execution to the 
 1. add a stylelint check for raw pixel values excluding `rem-calc`-like functions with `certainlyakey/stylelint-no-px`
 2. add a stylelint check for browser incompatibilities with `ismay/stylelint-no-unsupported-browser-features`
 3. add a stylelint check for incorrect imports with `certainlyakey/stylelint-at-rule-import-path`
+4. move to Susy 3.x
