@@ -14,7 +14,7 @@ add_theme_support( 'html5', array( 'search-form', 'caption', 'gallery' ) );
 
 //Load localization domain
 function themeprefix_load_localisation(){
-  load_theme_textdomain('themedomain', get_template_directory() . '/languages');
+  load_theme_textdomain('theme_domain', get_template_directory() . '/languages');
 }
 
 add_action( 'after_setup_theme', 'themeprefix_load_localisation' );
