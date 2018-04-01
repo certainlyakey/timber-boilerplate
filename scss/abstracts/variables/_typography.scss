@@ -1,7 +1,7 @@
 $ff-body:'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
-$font-size-base:16px;
+$font-size-base:rem-calc(16px);
 
 // A map containing the basic typography for all the site
 // The 2nd level of the map (body and heading) corresponds to the main typefaces.
@@ -28,4 +28,5 @@ $font-styles: (
   // )
 
 );
+
 /* stylelint-enable indentation */

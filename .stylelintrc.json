@@ -2,8 +2,8 @@
   "extends": "stylelint-config-recommended-scss",
   "plugins": [
     "stylelint-scss",
-    "stylelint-at-rule-import-path",
-    "stylelint-no-px"
+    "stylelint-no-px",
+    "stylelint-at-rule-import-path"
   ],
   "rules": {
     "block-no-empty": null,

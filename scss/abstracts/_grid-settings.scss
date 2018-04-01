@@ -4,11 +4,11 @@
 // use @include gallery(n of 12) to set width for a column when all columns in a row are of same width
 
 $susy: (
-  columns: 12,  // The number of columns in your grid
+  columns: $_cols_number,  // The number of columns in your grid
   gutters: .5, // The size of a gutter in relation to a single column
   container: auto,
   math: fluid,
-  column-width: 60px,
+  column-width: to_px($_col_width),
   // debug: (image: show),
   global-box-sizing: border-box
 );
