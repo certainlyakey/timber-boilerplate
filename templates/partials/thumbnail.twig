@@ -1,17 +1,34 @@
 {% if post %}
 
   {% if post.thumbnail %}
-
     {% set thumbnail = post.thumbnail %}
+  {% endif %}
+  {% if post.object_type == 'image' %}
+    {% set thumbnail = post %}
+  {% endif %}
 
-    {% set thumb_classes = [] %}
-    {% if classes is iterable %}
-      {% set thumb_classes = thumb_classes|merge(classes) %}
-    {% else %}
-      {% set thumb_classes = [classes] %}
+  {% if thumbnail %}
+
+    {% if classes %}
+
+      {% set thumb_classes = [] %}
+      {% if classes is iterable %}
+        {% set thumb_classes = thumb_classes|merge(classes) %}
+      {% else %}
+        {% set thumb_classes = [classes] %}
+      {% endif %}
+
+    {% endif %}
+
+    {% set thumb_attributes = {} %}
+    {% if thumb_classes %}
+      {% set thumb_attributes = {'class': thumb_classes|join(' ')} %}
+    {% endif %}
+    {% if attributes %}
+      {% set thumb_attributes = thumb_attributes|merge(attributes) %}
     {% endif %}
     
-    <img{{ ' class="' ~ thumb_classes|join(' ') ~ '"' }} src="{{thumbnail.src(size)}}" alt="{{ thumbnail.alt }}" width="{{ thumbnail.sizes[size].width }}" height="{{ thumbnail.sizes[size].height }}">
+    {{ fn('wp_get_attachment_image', thumbnail.id, size, false, thumb_attributes ) }}
 
   {% endif %}
 {% endif %}
