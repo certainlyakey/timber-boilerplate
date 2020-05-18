@@ -21,7 +21,6 @@
 
   // Environments:
   "browser"  : true,
-  "jquery"   : true,
   "node"     : true,
 
   // Globals:

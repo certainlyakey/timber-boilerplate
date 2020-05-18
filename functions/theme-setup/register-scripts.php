@@ -1,18 +1,13 @@
 <?php
-
-/* Registering scripts and styles
+/* 
+* Registering scripts and styles
 */
 
-
 function themeprefix_script_enqueuer() {
-  $scriptdeps_site = ['jquery', 'modernizr'];
+  $scriptdeps_site = ['modernizr'];
 
   wp_register_script( 'site', get_template_directory_uri() . '/js/scripts.min.js', $scriptdeps_site, false, true );
   wp_enqueue_script( 'site' );
-
-  wp_deregister_script( 'jquery' );
-  wp_register_script( 'jquery', get_template_directory_uri() . '/js/libs/jquery.min.js', [], false, true );
-  wp_enqueue_script( 'jquery' );
 
   wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', [], false, true );
   wp_enqueue_script( 'modernizr' );

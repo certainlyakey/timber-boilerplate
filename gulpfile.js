@@ -66,7 +66,7 @@ var _gettext            = require('gulp-gettext');
 
 // Standalone JS  libraries to copy to production build
 var libs_copied_from_nodemodules  = [
-  'node_modules/jquery/dist/jquery.min.js'
+  // 'node_modules/jquery/dist/jquery.min.js'
 ];
 
 
