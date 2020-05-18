@@ -5,8 +5,8 @@
 
 
 function themeprefix_localized_strings() {
-  $localized_strings = array(
-    'load_more' => __('Load more', 'theme_domain'),
-  );
+  $localized_strings = [
+    'load_more' => __( 'Load more', 'theme_domain' ),
+  ];
   return $localized_strings;
 }

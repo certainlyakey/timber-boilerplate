@@ -1,6 +1,6 @@
 <?php
-
-/* Registering various content types
+/**
+* Registering various content types
 */
 
 

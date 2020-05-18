@@ -5,22 +5,22 @@
 
 
 function themeprefix_script_enqueuer() {
-  $scriptdeps_site = array('jquery', 'modernizr');
+  $scriptdeps_site = ['jquery', 'modernizr'];
 
-  wp_register_script( 'site', get_template_directory_uri().'/js/scripts.min.js', $scriptdeps_site, false, true );
+  wp_register_script( 'site', get_template_directory_uri() . '/js/scripts.min.js', $scriptdeps_site, false, true );
   wp_enqueue_script( 'site' );
 
   wp_deregister_script( 'jquery' );
-  wp_register_script( 'jquery', get_template_directory_uri().'/js/libs/jquery.min.js', array(), false, true );
+  wp_register_script( 'jquery', get_template_directory_uri() . '/js/libs/jquery.min.js', [], false, true );
   wp_enqueue_script( 'jquery' );
 
-  wp_register_script( 'modernizr', get_template_directory_uri().'/js/modernizr.min.js', array(), false, true );
+  wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', [], false, true );
   wp_enqueue_script( 'modernizr' );
 
-  wp_localize_script('site', 'localized_strings', themeprefix_localized_strings());
-  wp_localize_script('site', 'script_data', themeprefix_script_data());
+  wp_localize_script( 'site', 'localized_strings', themeprefix_localized_strings() );
+  wp_localize_script( 'site', 'script_data', themeprefix_script_data() );
 
-  wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
+  wp_register_style( 'screen', get_stylesheet_directory_uri() . '/style.css', '', '', 'screen' );
   wp_enqueue_style( 'screen' );
 }
 
@@ -31,12 +31,13 @@ add_action( 'wp_enqueue_scripts', 'themeprefix_script_enqueuer', 10 );
 function themeprefix_defer_scripts( $tag, $handle, $src ) {
 
   // The handles of the enqueued scripts we want to defer
-  $defer_scripts = array();
+  $defer_scripts = [];
 
-  if (in_array($handle, $defer_scripts)) {
-    return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+  if ( in_array( $handle, $defer_scripts ) ) {
+    return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>\n';
   }
   
   return $tag;
-} 
+}
+
 add_filter( 'script_loader_tag', 'themeprefix_defer_scripts', 10, 3 );

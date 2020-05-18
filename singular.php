@@ -2,14 +2,15 @@
 /**
  * Singular pages (pages and posts of any type)
  */
-$context = Timber::get_context();
-$post = Timber::query_post(false, 'CommonPost');
-$context['post'] = $post;
 
-if ( post_password_required( $post->ID ) ) {
+$context = Timber::get_context();
+$timber_post = Timber::query_post( false, 'CommonPost' );
+$context['post'] = $timber_post;
+
+if ( post_password_required( $timber_post->ID ) ) {
   Timber::render( 'single-password.twig', $context );
-} elseif (get_post_type($post) == 'page') {
-  Timber::render(array('page.twig', 'singular.twig'), $context);
+} elseif ( get_post_type( $timber_post ) === 'page' ) {
+  Timber::render( ['page.twig', 'singular.twig'], $context );
 } else {
-  Timber::render( array( 'single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig', 'singular.twig' ), $context );
+  Timber::render( ['single-' . $timber_post->ID . '.twig', 'single-' . $timber_post->post_type . '.twig', 'single.twig', 'singular.twig'], $context );
 }

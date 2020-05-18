@@ -1,8 +1,7 @@
 <?php
-
-/* Registering various taxonomies
+/**
+* Registering various taxonomies
 */
-
 
 function themeprefix_register_taxonomies() {
   // register_taxonomy();
