@@ -57,14 +57,13 @@ You may wish to add `style.css` in the root after first `gulp` execution to the 
 - The theme Javascript is separated into modules. Each module is merged into the main `scripts.min.js` file which is served on frontend upon gulp compilation. Each time you need to introduce a new script that is not related to others, you will want to create a new module.
     1. duplicate any existing module in the `js/modules` folder (or the provided `example-module.js` file);
     2. rename it appropriately;
-    3. open `js/main.js` file and make these changes inside the `jQuery(function($){` block:
-        1. add a line `var example_module = require('./modules/example-module');` replacing `example_module` with a name of the module;
-        2. add a line `example_module.init();` again replacing `example_module` with the name of the module.
+    3. init the module in `js/main.js` file.
 - Theme functions are organized into several includes, if adding something try to find an appropriate include for that or create a new one. Each file's purpose is described in its comment section.
 - When registering new custom fields you can follow the naming convention of `{posttypename}_{fieldname}` for post custom fields and post-type-wide fields (stored in the `option` table) and `{taxname}_{fieldname}` for term meta fields. This will allow you to use the fields in various smart ways.
 - You can use Loco Translate plugin for translation of the English theme strings into another languages (no setup needed, just install it on your local). The plugin will automatically discover all the English strings of the theme and will let you translate them right in the admin. After doing some translations make a commit. The translation file `<theme-path>/languages/<lang-slug>.po` is compiled into the `.mo` file when you save your translation in Loco Translate admin interface and also by a `gulp watch` task.
 - You may put `ENV=dev` in `.env` file if it exists; this will generate files more adapted for local FE work (CSS source maps, non minified CSS/JS, pixels instead of rems). On staging/production it may contain anything except for `dev`.
 - You can use a `@z-index space: XX-XX` comment in the beginning of a SCSS file of an object or component to indicate the range of `z-index` values to be used here to other developers. This helps to prevent clashes between different components. Obviously, other components should have `z-index` values assigned in another range. For example, a component `c-a` will have `@z-index space: 20-30` comment while a component `c-b` will have `@z-index space: 30-40`.
+- You can lint PHP files by running `composer install` in the theme folder (install [composer](https://getcomposer.org/) globally first) and `vendor/bin/phpcs .`. 
 
 ## Ideas for future development
 
