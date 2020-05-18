@@ -1,19 +1,14 @@
 'use strict';
 
-jQuery(window).on('load', function() {
-  jQuery('html').removeClass('is-page-loading');
-});
+document.addEventListener('DOMContentLoaded', function() {
 
-
-
-jQuery(function($){
+  document.getElementsByClassName('is-page-loading')[0].classList.remove('is-page-loading');
+  document.getElementsByClassName('no-js')[0].classList.remove('no-js');
 
   // Common functions
-  var common = require('./modules/_common');
+  const utils = require('./modules/_utils').init();
 
   // Import Javascript modules here:
-  var example_module = require('./modules/example-module');
+  const example_module = require('./modules/example-module').init();
 
-  // common.init();
-  example_module.init();
 });
