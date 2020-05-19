@@ -31,6 +31,9 @@ Thumbs.db
 # ignore log files
 *.log
 
+# ignore i18n files
+*.mo
+
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------
