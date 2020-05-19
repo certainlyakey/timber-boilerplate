@@ -46,4 +46,11 @@ add_action( 'acf/init', 'themeprefix_acf_localize_fields_when_exporting' );
 
 
 // Disable "Custom fields" menu in admin
-// add_filter( 'acf/settings/show_admin', '__return_false' );
+// You need to load environment to WP in order for this to work
+// Eg. by adding autoload.php from a site' vendor folder to wp-config.php
+add_filter(
+  'acf/settings/show_admin', 
+  function() {
+    return getenv( 'ENV' ) === 'dev' ? true : false;
+  }
+);
