@@ -25,6 +25,7 @@
     "selector-max-specificity": "0,3,2",
     "selector-max-type": [0, {"severity": "warning", "message":"Try to avoid using type selectors as they make styling components more dependent on specific markup and might cause specificity conflicts. Add classes to markup instead and utilise them. Use stylelint ignore rules when needed", "ignoreTypes": ["a"]}],
     "selector-max-universal": [0, {"severity": "warning"}],
+    "no-descending-specificity": [true, {"severity": "warning"}],
     "selector-no-qualifying-type": true, 
     "selector-no-vendor-prefix": [true, {"severity": "warning", "message":"Do not use vendor-prefixed selectors. Autoprefixer will take care of them"}],
     "at-rule-no-vendor-prefix": [true, {"severity": "warning", "message":"Do not use vendor-prefixed at-rules. Autoprefixer will take care of them"}],

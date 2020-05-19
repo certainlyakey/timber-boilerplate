@@ -1,13 +1,8 @@
 /* stylelint-disable meowtec/no-px */
 
-// Grid
-$total-cols:map-get($susy, columns);
-$col:map-get($susy, column-width);
-$gutter:map-get($susy, gutters) * $col;
-
 // Proportions
-$unit-x:rem-calc(10px);
-$unit-y:$unit-x;
+$unit-x: rem-calc(10px);
+$unit-y: $unit-x;
 
 // Widths
 

@@ -1,7 +1,7 @@
 /* stylelint-disable declaration-no-important, selector-max-universal */
 body {
   @include u-set-typography;
-  background-color:$color-bg; 
+  background-color: $color-bg; 
 }
 
 a {
@@ -13,7 +13,7 @@ a {
 }
 
 .is-page-loading * {
-  transition:none !important;
+  transition: none !important;
 }
 
 .u-link {

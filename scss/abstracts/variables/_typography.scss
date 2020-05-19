@@ -1,7 +1,7 @@
-$ff-body:'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ff-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
-$font-size-base:rem-calc(16px);
+$font-size-base: rem-calc(16px);
 
 // A map containing the basic typography for all the site
 // The 2nd level of the map (body and heading) corresponds to the main typefaces.
@@ -14,8 +14,8 @@ $font-styles: (
   'body': ( // aka Helvetica Neue
 
     'regular': (
-      font-size:$font-size-base,
-      line-height:1.6
+      font-size: $font-size-base,
+      line-height: 1.6
     ),
   ),
 

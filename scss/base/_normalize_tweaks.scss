@@ -1,17 +1,17 @@
 /* stylelint-disable selector-max-universal, selector-max-type */
 // Tweaks for Normalize 3.0
 h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, li, figure {
-  margin:0;
-  padding:0; 
+  margin: 0;
+  padding: 0; 
 }
 
 h1, h2, h3, h4, h5, h6 {  
-  font-weight:normal; 
-  font-size:100%; 
+  font-weight: normal; 
+  font-size: 100%; 
 }
 
 ul {
-  list-style:none;
+  list-style: none;
 }
 
 html {
@@ -23,24 +23,24 @@ html {
 }
 
 ol, ul {
-  list-style-position:inside; 
+  list-style-position: inside; 
 }
 
 textarea {
-  max-width:100%;
-  resize:vertical;
+  max-width: 100%;
+  resize: vertical;
 }
 
 fieldset {
-  border:none; 
-  margin:0; 
-  padding:0; 
+  border: none; 
+  margin: 0; 
+  padding: 0; 
 }
 
 select {
-  color:black; 
+  color: black; 
 }
 
 iframe {
-  border:none; 
+  border: none; 
 }

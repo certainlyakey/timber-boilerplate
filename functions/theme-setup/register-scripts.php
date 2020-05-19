@@ -4,13 +4,10 @@
 */
 
 function themeprefix_script_enqueuer() {
-  $scriptdeps_site = ['modernizr'];
+  $scriptdeps_site = [];
 
   wp_register_script( 'site', get_template_directory_uri() . '/js/scripts.min.js', $scriptdeps_site, false, true );
   wp_enqueue_script( 'site' );
-
-  wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', [], false, true );
-  wp_enqueue_script( 'modernizr' );
 
   wp_localize_script( 'site', 'localized_strings', themeprefix_localized_strings() );
   wp_localize_script( 'site', 'script_data', themeprefix_script_data() );

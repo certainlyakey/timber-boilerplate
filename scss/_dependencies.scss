@@ -1,9 +1,8 @@
 /* stylelint-disable plugin/at-rule-import-path */
 
 // SASS compile-time dependencies
-@import 'susy';
-@import 'sass-mq/_mq.scss';
-@import 'common-sass-utilities';
-@import 'sass-rem';
+@import '~sass-mq/_mq.scss';
+@import '~common-sass-utilities';
+@import '~sass-rem';
 
 /* stylelint-enable plugin/at-rule-import-path */

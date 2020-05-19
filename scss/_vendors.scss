@@ -2,6 +2,6 @@
 
 // CSS and Javascript dependencies
 // Thanks to sass-module-importer gulp plugin we can import css files from node_modules without renaming like this: "@import 'fullpage.js/dist/jquery.fullpage.min.css';"
-@import 'normalize.css/normalize.css';
+@import '~normalize.css/normalize.css';
 
 /* stylelint-enable plugin/at-rule-import-path */

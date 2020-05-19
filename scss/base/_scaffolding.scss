@@ -1,11 +1,10 @@
 // !Dev related styles
-// @include baseline-grid($lineheight);
 .c-edit-link {
-  position:fixed; 
-  top:1em; 
-  left:1em; 
-  opacity:0; 
+  position: fixed; 
+  top: 1em; 
+  left: 1em; 
+  opacity: 0; 
   &:hover {
-    opacity:1; 
+    opacity: 1; 
   }
 }

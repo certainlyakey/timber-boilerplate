@@ -1,5 +1,4 @@
 {
-  "cols_number":10,
-  "col_width":70,
-  "gutter_width":25
+  "avatar_width": 80,
+  "avatar_height": 80
 }

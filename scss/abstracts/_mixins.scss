@@ -2,17 +2,17 @@
 
 // !Utilities
 // These do one single thing
-@mixin u-set-typography($typeface-name:'body', $style-name:'regular') {
+@mixin u-set-typography($typeface-name: 'body', $style-name: 'regular') {
   
   $this-typeface: map-get($font-styles, $typeface-name);
   $this-style: map-get($this-typeface, $style-name);
   
   @if $typeface-name == 'body' {
-    font-family:$ff-body; 
+    font-family: $ff-body; 
   }
   @if $typeface-name == 'heading' {
-    font-family:$ff-heading; 
-    font-weight:800; 
+    font-family: $ff-heading; 
+    font-weight: 800; 
   }
 
   @each $property, $value in $this-style {
@@ -20,7 +20,7 @@
       @include mq($from: $property) {
         @each $subproperty, $subvalue in $value {
           @if $subproperty == 'font-size' {
-            $subvalue:rem-calc($subvalue);
+            $subvalue: rem-calc($subvalue);
           }
 
           #{$subproperty}: $subvalue;
@@ -28,7 +28,7 @@
       }
     } @else {
       @if $property == 'font-size' {
-        $value:rem-calc($value);
+        $value: rem-calc($value);
       }
       #{$property}: $value;
     }
@@ -46,8 +46,8 @@
 // pure appearance (typographic/cosmetic) styles
 
 @mixin t-link-base {
-  color:$color-link; 
-  text-decoration:none; 
+  color: $color-link; 
+  text-decoration: none; 
 }
 
 

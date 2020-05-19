@@ -9,7 +9,7 @@
 - `dotenv` for doing different things depending on local/stg/prod environment;
 - shared variables inside the theme (a variable added to `common_config.json` can be reused in JS/Gulp/SASS/PHP/Twig);
 - npm packages for theme usage;
-- ES2015-enabled modular JS. See below on how to use it;
+- Babel-enabled modular JS;
 - SVG spriting. Put new SVG files to be found in the sprite to `<themename>/img/svg-sprite-source` folder, invoke them with the `image-svg-sprite.twig` partial;
 - automated Modernizr build based on actually used features only;
 - custom fields registered in code for faster deployment to other environments. 
@@ -46,8 +46,10 @@ The theme can also make use of an `.env` file if it exists in the project. The p
 1. Replace all the instances of `themeprefix` in boilerplate `*.php` files with any prefix wanted;
 2. replace all the instances of `theme_domain` in boilerplate `*.php`, `*.twig`, `style.scss`, `loco.xml` files with your theme's localisation domain;
 3. rename the theme in `style.scss` and `package.json` files appropriately;
-3. go to the `timber-theme` theme folder, run `npm install`;
-4. run `gulp` to compile theme, `gulp watch` to compile and watch for changes.
+4. go to the `timber-theme` theme folder, run `npm install`;
+5. create an `.env` file in the theme folder or adjust its location in `gulpfile.js`. Add `HOST=YOURLOCALSITE.TEST` there to enable Browsersync;
+6. Add `ENV=dev` line to the `.env` file. This will generate files more adapted for local FE work (CSS source maps, non minified CSS/JS, pixels instead of rems). On staging/production it may contain anything except for `dev`;
+7. run `gulp` to compile theme, `gulp watch` to compile and watch for changes.
 
 You may wish to add `style.css` in the root after first `gulp` execution to the theme's `.gitignore` file (though it's not mandatory).
 
@@ -60,12 +62,10 @@ You may wish to add `style.css` in the root after first `gulp` execution to the 
     3. init the module in `js/main.js` file.
 - Theme functions are organized into several includes, if adding something try to find an appropriate include for that or create a new one. Each file's purpose is described in its comment section.
 - When registering new custom fields you can follow the naming convention of `{posttypename}_{fieldname}` for post custom fields and post-type-wide fields (stored in the `option` table) and `{taxname}_{fieldname}` for term meta fields. This will allow you to use the fields in various smart ways.
-- You can use Loco Translate plugin for translation of the English theme strings into another languages (no setup needed, just install it on your local). The plugin will automatically discover all the English strings of the theme and will let you translate them right in the admin. After doing some translations make a commit. The translation file `<theme-path>/languages/<lang-slug>.po` is compiled into the `.mo` file when you save your translation in Loco Translate admin interface and also by a `gulp watch` task.
-- You may put `ENV=dev` in `.env` file if it exists; this will generate files more adapted for local FE work (CSS source maps, non minified CSS/JS, pixels instead of rems). On staging/production it may contain anything except for `dev`.
+- You can use [Loco Translate](https://wordpress.org/plugins/loco-translate/) plugin for translation of the English theme strings into another languages (no setup needed, just install it on your local). The plugin will automatically discover all the English strings of the theme and will let you translate them right in the admin. After doing some translations make a commit. The translation file `<theme-path>/languages/<lang-slug>.po` is compiled into the `.mo` file when you save your translation in Loco Translate admin interface and also by a `gulp watch` task.
 - You can use a `@z-index space: XX-XX` comment in the beginning of a SCSS file of an object or component to indicate the range of `z-index` values to be used here to other developers. This helps to prevent clashes between different components. Obviously, other components should have `z-index` values assigned in another range. For example, a component `c-a` will have `@z-index space: 20-30` comment while a component `c-b` will have `@z-index space: 30-40`.
 - You can lint PHP files by running `composer install` in the theme folder (install [composer](https://getcomposer.org/) globally first) and `vendor/bin/phpcs .`. 
 
 ## Ideas for future development
 
 1. add a stylelint check for browser incompatibilities with `ismay/stylelint-no-unsupported-browser-features`
-2. move to Susy 3.x

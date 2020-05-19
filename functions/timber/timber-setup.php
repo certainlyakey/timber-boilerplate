@@ -21,4 +21,4 @@ if ( !class_exists( 'Timber' ) ) {
   return;
 }
 
-Timber::$dirname = ['templates', 'views'];
+Timber::$dirname = ['templates', 'img'];
