@@ -1,8 +1,6 @@
 <?php
-/*  
-    Redefine or setup variables that should be available via $context['post'] 
-    in all the templates. If you want to do something with global post.thumbnail 
-    property before it reaches templates — here's is the place 
+/**
+* Redefine or setup variables that should be available via $context['post'] in all the templates. If you want to do something with global post.thumbnail property before it reaches templates — here's is the place 
 */
 
 

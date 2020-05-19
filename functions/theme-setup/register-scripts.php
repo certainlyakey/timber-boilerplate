@@ -1,5 +1,5 @@
 <?php
-/* 
+/** 
 * Registering scripts and styles
 */
 

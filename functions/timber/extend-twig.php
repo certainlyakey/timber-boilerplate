@@ -1,8 +1,7 @@
 <?php
-
-/* Setup Timber environment
+/**
+* Setup Timber environment 
 */
-
 
 function themeprefix_add_to_twig( $twig ) {
   

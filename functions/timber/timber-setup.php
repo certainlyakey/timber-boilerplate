@@ -1,8 +1,7 @@
 <?php
-
-/* Setup Timber environment
+/**
+* Setup Timber environment
 */
-
 
 if ( !class_exists( 'Timber' ) ) {
   add_action( 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Front page
+ */
 
 // front page set in WP settings
 $context = Timber::get_context();

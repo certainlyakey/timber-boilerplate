@@ -1,6 +1,6 @@
 <?php
-
-/* Setup variables that should be available via $context in all the templates
+/**
+* Setup variables that should be available via $context in all the templates 
 */
 
 

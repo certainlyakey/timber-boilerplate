@@ -1,6 +1,6 @@
 <?php
-
-/* Sidebar registration
+/**
+* Sidebar registration
 */
 
 function themeprefix_widgets_init() {

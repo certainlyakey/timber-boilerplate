@@ -1,6 +1,6 @@
 <?php
-
-/* Returns an array with the localized strings for inserting into JS
+/** 
+* A function that returns an array with the localized strings for inserting into JS
 */
 
 

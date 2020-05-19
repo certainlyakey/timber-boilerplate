@@ -1,4 +1,7 @@
 <?php
+/**
+* Blog posts page
+*/
 
 $context = Timber::get_context();
 
