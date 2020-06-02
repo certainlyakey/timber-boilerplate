@@ -1,15 +1,12 @@
 'use strict';
+// import common_config from '../../common_config.json';
 
 /**
  * Example module
  */
-function init() {
+export const example_module = () => {
 
   // !Set vars
-  // var common = require('../modules/_common');
-  // var isiOSSafari = common.isiOSSafari();
-
-  // var common_config = require('../../common_config.json');
 
 
 
@@ -28,8 +25,4 @@ function init() {
 
 
 
-}
-
-module.exports = {
-  init: init
 };

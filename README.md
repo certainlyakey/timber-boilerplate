@@ -69,3 +69,4 @@ You may wish to add `style.css` in the root after first `gulp` execution to the 
 ## Ideas for future development
 
 1. add a stylelint check for browser incompatibilities with `ismay/stylelint-no-unsupported-browser-features`
+2. replace JSHint with ESLint

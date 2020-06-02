@@ -3,85 +3,79 @@
 /**
  * Common utility functions
  */
-function init() {
+export const isIE = () => {
+  var isIE = /*@cc_on!@*/false || !!document.documentMode;
+  return isIE;
+};
 
+
+export const isEdge = () => {
+  // Edge 20+
+  var isEdge = !isIE() && !!window.StyleMedia;
+  return isEdge;
+};
+
+
+export const isChrome = () => {
+  var isChrome = !!window.chrome;
+  return isChrome;
+};
+
+
+export const isSafari = () => {
+  var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+  return isSafari;
+};
+
+
+export const isiOSSafari = () => {
+  var isiOS = !!navigator.userAgent.match(/iPad/i) || !!navigator.userAgent.match(/iPhone/i);
+  var isWebkit = !!navigator.userAgent.match(/WebKit/i);
+  return isiOS && isWebkit;
+};
+
+
+export const addBrowserClasses = () => {
 
   // adds classes to IE and Edge
-  if (this.isIE()) {
+  if (isIE()) {
     document.documentElement.classList.add('js-browser-ie');
   }
-  if (this.isEdge()) {
+  if (isEdge()) {
     document.documentElement.classList.add('js-browser-edge');
   }
 
 
 
   // adds class to Chrome
-  if (this.isChrome()) {
+  if (isChrome()) {
     document.documentElement.classList.add('js-browser-chrome');
   }
 
 
 
   // adds class to Safari
-  if (this.isSafari()) {
+  if (isSafari()) {
     document.documentElement.classList.add('js-browser-safari');
   }
 
 
 
   // adds class to iOS Safari
-  if (this.isiOSSafari()) {
+  if (isiOSSafari()) {
     document.documentElement.classList.add('js-browser-ios-safari');
   }
 
-
-}
-
+};
 
 
-function isIE() {
-  var isIE = /*@cc_on!@*/false || !!document.documentMode;
-  return isIE;
-}
-
-
-
-function isEdge() {
-  // Pre-webkit Edge 20+
-  var isEdge = !this.isIE() && !!window.StyleMedia;
-  return isEdge;
-}
-
-
-
-function isChrome() {
-  var isChrome = !!window.chrome;
-  return isChrome;
-}
-
-
-
-function isSafari() {
-  var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
-  return isSafari;
-}
-
-
-
-function isiOSSafari() {
-  var isiOS = !!navigator.userAgent.match(/iPad/i) || !!navigator.userAgent.match(/iPhone/i);
-  var isWebkit = !!navigator.userAgent.match(/WebKit/i);
-  return isiOS && isWebkit;
-}
-
-
-
-module.exports = {
-  init: init,
-  isIE: isIE,
-  isEdge: isEdge,
-  isChrome: isChrome,
-  isSafari: isSafari,
-  isiOSSafari: isiOSSafari
+export const debounce = (func, ms) => {
+  let timeout;
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      timeout = null;
+      func();
+    }, ms);
+  };
 };

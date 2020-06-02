@@ -1,4 +1,6 @@
 'use strict';
+import { addBrowserClasses } from './modules/_utils';
+import { example_module } from './modules/example-module';
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -6,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementsByClassName('no-js')[0].classList.remove('no-js');
 
   // Common functions
-  const utils = require('./modules/_utils').init();
+  addBrowserClasses();
 
   // Import Javascript modules here:
-  const example_module = require('./modules/example-module').init();
+  example_module();
 
 });
