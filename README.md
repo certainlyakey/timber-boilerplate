@@ -3,7 +3,7 @@
 ## Theme highlights
 
 - [Timber](https://timber.github.io/docs/) (Twig) based templates. Put logic in usual wordpress PHP templates, relate it to a Twig template by assigning to the `$context[]` variable, add corresponding templates in `<themename>/templates` folder;
-- BEM methodology for markup/CSS. The project frontend consists of self-contained components. BEM naming convention is `component__element_modifier`. Avoid all the things that you would avoid in a typical BEM-like project. See below for more information;
+- [BEM](https://bem.info) methodology for markup/CSS. The project frontend consists of self-contained components. BEM naming convention is `component__element_modifier`. Avoid all the things that you would avoid in a typical BEM-like project. See below for more information;
 - namespaces for CSS classes aka prefixes. Read below on what prefixes can be used, and see here [why namespacing is cool](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/);
 - stylelint linting. Comments starting from words "todo"/"hack" appear as warnings to bring attention to them;
 - `dotenv` for doing different things depending on local/stg/prod environment;
