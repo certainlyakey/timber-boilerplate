@@ -23,7 +23,7 @@
     "selector-max-compound-selectors": 3,
     "selector-max-id": 0,
     "selector-max-specificity": "0,3,2",
-    "selector-max-type": [0, {"severity": "warning", "message":"Try to avoid using type selectors as they make styling components more dependent on specific markup and might cause specificity conflicts. Add classes to markup instead and utilise them. Use stylelint ignore rules when needed", "ignoreTypes": ["a"]}],
+    "selector-max-type": [0, {"severity": "warning", "message":"Try to avoid using type selectors as they make styling components more dependent on specific markup and might cause specificity conflicts. Add classes to markup instead and utilise them. Use stylelint ignore rules when needed", "ignoreTypes": ["a", "/--/"]}],
     "selector-max-universal": [0, {"severity": "warning"}],
     "no-descending-specificity": [true, {"severity": "warning"}],
     "selector-no-qualifying-type": true, 
